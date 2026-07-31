@@ -3,11 +3,10 @@
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
-
-from PIL import Image
+from unittest.mock import patch
 
 from scripts.convert_tcte_past_papers import (
-    _combine_images,
+    convert_document,
     extract_questions_from_html,
     parse_answers_text,
     render_markdown,
@@ -32,11 +31,50 @@ FIXTURE_HTML = """
 
 
 class ConvertTctePastPapersTest(unittest.TestCase):
-    def test_combines_word_vector_crops_without_an_alpha_mask(self):
+    def test_converter_delegates_word_figure_writing(self):
         with TemporaryDirectory() as temp_dir:
-            destination = Path(temp_dir) / "combined.png"
-            _combine_images([Image.new("RGB", (20, 10), "white")], destination)
-            self.assertTrue(destination.is_file())
+            root = Path(temp_dir)
+            question_docx = root / "questions.docx"
+            answer_pdf = root / "answers.pdf"
+            markdown_path = root / "paper.md"
+            image_dir = root / "images"
+            question_docx.touch()
+            answer_pdf.touch()
+            source_html = "<html><body><table>" + "".join(
+                f"<tr><td>{number}. 題目{number} (A) 甲 (B) 乙 (C) 丙 (D) 丁</td></tr>"
+                for number in range(1, 51)
+            ) + "</table></body></html>"
+            answer_text = " ".join(f"{number} A" for number in range(1, 51))
+
+            def run_command(command, **kwargs):
+                if "html" in command:
+                    Path(command[command.index("--outdir") + 1], "questions.html").write_text(
+                        source_html, encoding="utf-8"
+                    )
+                    return None
+                return type("Result", (), {"stdout": answer_text})()
+
+            sources = {number: [] for number in range(1, 51)}
+            sources[1] = ["word/media/figure.emf"]
+            with patch("scripts.convert_tcte_past_papers.subprocess.run", side_effect=run_command), patch(
+                "scripts.convert_tcte_past_papers.extract_word_question_images",
+                return_value=sources,
+            ) as extract:
+                convert_document(
+                    question_docx,
+                    answer_pdf,
+                    markdown_path,
+                    image_dir,
+                    "115-professional-1",
+                    "soffice",
+                    "pdftotext",
+                )
+
+            extract.assert_called_once_with(question_docx, image_dir, "soffice")
+            self.assertIn(
+                "![](../images/115-professional-1/q1.png)",
+                markdown_path.read_text(encoding="utf-8"),
+            )
 
     def test_normalises_an_official_multi_answer_without_a_separator(self):
         self.assertEqual(
