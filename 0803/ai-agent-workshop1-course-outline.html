@@ -107,6 +107,7 @@
   }
   .slide-text h2 { margin-top:0; }
   .slide-text p:last-child { margin-bottom:0; }
+  .slide-text p, .slide-text li, .slide-text blockquote { max-width:none; }
   blockquote {
     max-width:var(--measure); margin:1.1em 0; padding:12px 16px; border-left:4px solid var(--accent2);
     background:color-mix(in srgb, var(--card) 94%, var(--accent) 6%); color:var(--fg);
@@ -174,21 +175,21 @@
   <a class="navhome return-control" href="index.html" aria-label="返回上一層 / Back to parent"><span class="zh">返回上一層</span><span class="en">Back to parent</span></a>
   <nav class="nav"><button class="navbtn" onclick="gotoSection(0)" type="button"><span class="zh">課程資訊</span><span class="en">Course Information</span></button>
 <button class="navbtn" onclick="gotoSection(1)" type="button"><span class="zh">一、工作坊目標與使用情境</span><span class="en">1. Workshop Goals and Use Cases</span></button>
-<button class="navbtn" onclick="gotoSection(2)" type="button"><span class="zh">二、Capstone 預覽：形成性評量系統與 AI 輔助教學</span><span class="en">2. Capstone Preview: Formative Assessment and AI-Assisted Teaching</span></button>
-<button class="navbtn" onclick="gotoSection(3)" type="button"><span class="zh">三、自然語言、vibe coding 與程式角色的改變</span><span class="en">3. Natural Language, Vibe Coding, and the Changing Role of Code</span></button>
-<button class="navbtn" onclick="gotoSection(4)" type="button"><span class="zh">四、ChatGPT：Chat、Work 與 Codex</span><span class="en">4. ChatGPT: Chat, Work, and Codex</span></button>
-<button class="navbtn" onclick="gotoSection(5)" type="button"><span class="zh">五、資料隱私、雲端 AI 與 Local LLM</span><span class="en">5. Data Privacy, Cloud AI, and Local LLMs</span></button>
-<button class="navbtn" onclick="gotoSection(6)" type="button"><span class="zh">六、Token、權限與安全意識</span><span class="en">6. Tokens, Permissions, and Security Awareness</span></button>
-<button class="navbtn" onclick="gotoSection(7)" type="button"><span class="zh">七、電腦環境與硬體需求</span><span class="en">7. Computer Environment and Hardware Requirements</span></button>
-<button class="navbtn" onclick="gotoSection(8)" type="button"><span class="zh">八、ChatGPT 中使用 Codex 的設定</span><span class="en">8. Using Codex in ChatGPT</span></button>
-<button class="navbtn" onclick="gotoSection(9)" type="button"><span class="zh">九、Module 1：Windows 11 Vibe Coding 環境準備</span><span class="en">9. Module 1: Windows 11 Vibe Coding Environment Preparation</span></button>
-<button class="navbtn" onclick="gotoSection(10)" type="button"><span class="zh">十、Markdown、AGENTS.md、Skill 與可讀文件</span><span class="en">10. Markdown, AGENTS.md, Skills, and Readable Documents</span></button>
-<button class="navbtn" onclick="gotoSection(11)" type="button"><span class="zh">十一、Plugin、Playwright MCP 與 Computer Use</span><span class="en">11. Plugins, Playwright MCP, and Computer Use</span></button>
-<button class="navbtn" onclick="gotoSection(12)" type="button"><span class="zh">十二、Record &amp; Replay：從示範到意圖式重播</span><span class="en">12. Record &amp; Replay: From Demonstration to Intent-Based Replay</span></button>
-<button class="navbtn" onclick="gotoSection(13)" type="button"><span class="zh">十三、Module 2：用問卷資料比較三種 AI 使用情境</span><span class="en">13. Module 2: Comparing Three AI Use Scenarios with Questionnaire Data</span></button>
-<button class="navbtn" onclick="gotoSection(14)" type="button"><span class="zh">十四、Module 3（一）：下載統測歷年考題與答案</span><span class="en">14. Module 3 (Part 1): Download Historical Exam Papers and Answer Keys</span></button>
-<button class="navbtn" onclick="gotoSection(15)" type="button"><span class="zh">十五、Module 3（二）：試題切題與 JSON 答案鍵</span><span class="en">15. Module 3 (Part 2): Question Cropping and JSON Answer Key</span></button>
-<button class="navbtn" onclick="gotoSection(16)" type="button"><span class="zh">十六、從一次操作到可重複流程</span><span class="en">16. From One-Time Operation to Repeatable Workflow</span></button>
+<button class="navbtn" onclick="gotoSection(2)" type="button"><span class="zh">二、自然語言、vibe coding 與程式角色的改變</span><span class="en">2. Natural Language, Vibe Coding, and the Changing Role of Code</span></button>
+<button class="navbtn" onclick="gotoSection(3)" type="button"><span class="zh">三、ChatGPT：Chat、Work 與 Codex</span><span class="en">3. ChatGPT: Chat, Work, and Codex</span></button>
+<button class="navbtn" onclick="gotoSection(4)" type="button"><span class="zh">四、資料隱私、雲端 AI 與 Local LLM</span><span class="en">4. Data Privacy, Cloud AI, and Local LLMs</span></button>
+<button class="navbtn" onclick="gotoSection(5)" type="button"><span class="zh">五、Token、權限與安全意識</span><span class="en">5. Tokens, Permissions, and Security Awareness</span></button>
+<button class="navbtn" onclick="gotoSection(6)" type="button"><span class="zh">六、電腦環境與硬體需求</span><span class="en">6. Computer Environment and Hardware Requirements</span></button>
+<button class="navbtn" onclick="gotoSection(7)" type="button"><span class="zh">七、ChatGPT 中使用 Codex 的設定</span><span class="en">7. Using Codex in ChatGPT</span></button>
+<button class="navbtn" onclick="gotoSection(8)" type="button"><span class="zh">八、Module 1：Windows 11 Vibe Coding 環境準備</span><span class="en">8. Module 1: Windows 11 Vibe Coding Environment Preparation</span></button>
+<button class="navbtn" onclick="gotoSection(9)" type="button"><span class="zh">九、Markdown、AGENTS.md、Skill 與可讀文件</span><span class="en">9. Markdown, AGENTS.md, Skills, and Readable Documents</span></button>
+<button class="navbtn" onclick="gotoSection(10)" type="button"><span class="zh">十、Plugin、Playwright MCP 與 Computer Use</span><span class="en">10. Plugins, Playwright MCP, and Computer Use</span></button>
+<button class="navbtn" onclick="gotoSection(11)" type="button"><span class="zh">十一、Record &amp; Replay：從示範到意圖式重播</span><span class="en">11. Record &amp; Replay: From Demonstration to Intent-Based Replay</span></button>
+<button class="navbtn" onclick="gotoSection(12)" type="button"><span class="zh">十二、Module 2：用問卷資料比較三種 AI 使用情境</span><span class="en">12. Module 2: Comparing Three AI Use Scenarios with Questionnaire Data</span></button>
+<button class="navbtn" onclick="gotoSection(13)" type="button"><span class="zh">十三、Module 3（一）：下載統測歷年考題與答案</span><span class="en">13. Module 3 (Part 1): Download Historical Exam Papers and Answer Keys</span></button>
+<button class="navbtn" onclick="gotoSection(14)" type="button"><span class="zh">十四、Module 3（二）：試題切題與 JSON 答案鍵</span><span class="en">14. Module 3 (Part 2): Question Cropping and JSON Answer Key</span></button>
+<button class="navbtn" onclick="gotoSection(15)" type="button"><span class="zh">十五、從一次操作到可重複流程</span><span class="en">15. From One-Time Operation to Repeatable Workflow</span></button>
+<button class="navbtn" onclick="gotoSection(16)" type="button"><span class="zh">十六、Capstone 預覽：形成性評量系統與 AI 輔助教學</span><span class="en">16. Capstone Preview: Formative Assessment and AI-Assisted Teaching</span></button>
 <button class="navbtn" onclick="gotoSection(17)" type="button"><span class="zh">十七、Q&amp;A 與常見卡關整理</span><span class="en">17. Q&amp;A and Common Troubleshooting</span></button></nav>
 </aside>
 <div class="backdrop" id="backdrop" onclick="toggleMenu()"></div>
@@ -288,18 +289,6 @@
 <p>本工作坊希望每位教師最後都能帶走一個與自己工作有關的小工具或可重複流程。這個成果不必是完整系統，也不必包含大量程式碼；它可以是整理學生資料的流程、擷取網頁內容的方法、產生教材頁面的模板、建立互動練習的步驟，或把重複行政工作包裝成可再次執行的 Skill。</p>
 <p>每位教師的使用情境都不同。不同課程、學校、學生族群與行政需求，會產生不同痛點。因此，課程的目的不是提供單一標準答案，而是讓學員理解 AI Agent 的能力邊界。只要某項工作原本可以透過鍵盤、滑鼠、瀏覽器、檔案與簡單工具完成，就有機會讓 AI Agent 協助規劃、執行與整理。</p>
 <p>課程使用 Codex 作為核心工具，並搭配 VS Code、GitHub、GitHub Copilot、Playwright MCP 與 Ollama。這些工具各自扮演不同角色：Codex 負責專案中的代理工作，VS Code 協助查看檔案，GitHub 支援版本管理與分享，Playwright MCP 支援瀏覽器操作，Ollama 提供 Local LLM 的本機模型情境。學習重點不在背工具名稱，而在理解它們如何組成一條可工作的流程。</p>
-  </div>
-</article><article class="content-slide-card">
-  <div class="full-screen-image" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; margin: 2rem 0; page-break-after: always;">
-  <figure><img src="assets/capstone-formative-assessment-infographic.png" alt="Capstone 形成性評量系統資訊圖" style="max-width: 100%; max-height: 100vh; object-fit: contain;" /></figure>
-</div>
-  <div class="slide-text">
-<h2 id="capstone-ai">二、Capstone 預覽：形成性評量系統與 AI 輔助教學</h2>
-<p>本系列工作坊最後會以 AI 形成性評量系統作為 Capstone 應用。這個範例不是單純做一份線上測驗，而是呈現一個完整的教學工具想像：教師端可以掌握全班作答狀態，學生端可以完成短測驗並帶走作答回顧，AI 則協助把錯題與教材轉成後續補強方向。</p>
-<p>形成性評量的核心不是考倒學生，而是在課堂中快速回答三個問題：學生是否理解剛剛的概念、哪些學生或哪些題型需要教師再補充、學生作答後能不能取得下一步複習方向。若評量資料只停留在分數，教師能做的判斷有限；若能把作答進度、正確率、錯題紀錄與教材內容串起來，評量就會變成課堂中的即時訊號，也會成為學生課後補強的材料。</p>
-<p>範例系統包含教師端 Dashboard 與學生端測驗介面。教師端看的是全班狀態，例如目前學生正在做哪一份測驗、完成幾題、正確率如何、是否已提交；學生端則提供登入、逐題作答、提交、成績摘要與逐題作答回顧。這些畫面讓學員先看見 Workshop 1、2、3 逐步累積後可能完成的教學應用，而不是要求一開始就理解所有技術細節。</p>
-<p>AI 在這個設計中的位置是學習鷹架，而不是代答工具。學生完成作答後，可以把作答紀錄、題目內容與教材摘要提供給 ChatGPT、Gemini 或其他工具，請 AI 分析錯誤可能來自哪個概念、該回頭複習哪一段教材，以及下一步可以做什麼練習。這樣的流程讓 AI 協助診斷與補強，而最後的理解、判斷與修正仍然需要學生自己完成。</p>
-<p>延伸參考：<a href="capstone-assessment-preview.html">AI Agent 教學應用工作坊 Capstone 預覽：形成性評量系統設計意圖</a>。</p>
   </div>
 </article><article class="content-slide-card">
   <div class="full-screen-image" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; margin: 2rem 0; page-break-after: always;">
@@ -451,10 +440,22 @@
   <figure><img src="assets/repeatable-workflow-infographic.png" alt="從一次操作到可重複流程資訊圖" style="max-width: 100%; max-height: 100vh; object-fit: contain;" /></figure>
 </div>
   <div class="slide-text">
-<h2 id="_5">十六、從一次操作到可重複流程</h2>
+<h2 id="_5">十五、從一次操作到可重複流程</h2>
 <p>一次成功的操作只是開始。真正有價值的是把成功操作整理成未來可以重複執行的流程。若某項任務每週、每月或每學期都會做，就不應每次重新與 AI 對話，而應把流程固定成 Skill、腳本或清楚的操作文件。</p>
 <p>可重複流程至少需要描述任務目標、輸入條件、操作步驟、輸出位置與驗證方式。以下載 CSV 為例，流程應包含如何確認本機伺服器可連線、開啟哪個 URL、支援哪些課程代碼、下載後存到哪個資料夾，以及如何確認檔案內容正確。</p>
 <p>這種整理工作能把 AI Agent 從「現場聊天工具」轉變成「可累積的工作系統」。教師每次完成一個流程，都可以把經驗沉澱到專案中，讓下一次任務更快、更穩定，也更容易交給同事或學生使用。</p>
+  </div>
+</article><article class="content-slide-card">
+  <div class="full-screen-image" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; margin: 2rem 0; page-break-after: always;">
+  <figure><img src="assets/capstone-formative-assessment-infographic.png" alt="Capstone 形成性評量系統資訊圖" style="max-width: 100%; max-height: 100vh; object-fit: contain;" /></figure>
+</div>
+  <div class="slide-text">
+<h2 id="capstone-ai">十六、Capstone 預覽：形成性評量系統與 AI 輔助教學</h2>
+<p>本系列工作坊最後會以 AI 形成性評量系統作為 Capstone 應用。這個範例不是單純做一份線上測驗，而是呈現一個完整的教學工具想像：教師端可以掌握全班作答狀態，學生端可以完成短測驗並帶走作答回顧，AI 則協助把錯題與教材轉成後續補強方向。</p>
+<p>形成性評量的核心不是考倒學生，而是在課堂中快速回答三個問題：學生是否理解剛剛的概念、哪些學生或哪些題型需要教師再補充、學生作答後能不能取得下一步複習方向。若評量資料只停留在分數，教師能做的判斷有限；若能把作答進度、正確率、錯題紀錄與教材內容串起來，評量就會變成課堂中的即時訊號，也會成為學生課後補強的材料。</p>
+<p>範例系統包含教師端 Dashboard 與學生端測驗介面。教師端看的是全班狀態，例如目前學生正在做哪一份測驗、完成幾題、正確率如何、是否已提交；學生端則提供登入、逐題作答、提交、成績摘要與逐題作答回顧。這些畫面讓學員先看見 Workshop 1、2、3 逐步累積後可能完成的教學應用，而不是要求一開始就理解所有技術細節。</p>
+<p>AI 在這個設計中的位置是學習鷹架，而不是代答工具。學生完成作答後，可以把作答紀錄、題目內容與教材摘要提供給 ChatGPT、Gemini 或其他工具，請 AI 分析錯誤可能來自哪個概念、該回頭複習哪一段教材，以及下一步可以做什麼練習。這樣的流程讓 AI 協助診斷與補強，而最後的理解、判斷與修正仍然需要學生自己完成。</p>
+<p>延伸參考：<a href="capstone-assessment-preview.html">AI Agent 教學應用工作坊 Capstone 預覽：形成性評量系統設計意圖</a>。</p>
   </div>
 </article><article class="content-slide-card">
   <div class="full-screen-image" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; margin: 2rem 0; page-break-after: always;">
@@ -545,18 +546,6 @@
 <p>By the end of the workshop, each teacher should leave with a small tool or repeatable workflow related to their own work. The outcome does not need to be a complete system or a large codebase. It may be a process for organizing student data, extracting web content, generating teaching pages, building interactive practice, or packaging a recurring administrative task as a reusable Skill.</p>
 <p>Every teacher’s context is different. Different courses, schools, student groups, and administrative needs create different pain points. The purpose of the course is not to provide one standard answer, but to help participants understand the capability boundaries of AI Agents. If a task can normally be done with keyboard, mouse, browser, files, and simple tools, there is a chance an AI Agent can help plan, execute, and document it.</p>
 <p>The workshop uses Codex as the core tool, alongside VS Code, GitHub, GitHub Copilot, Playwright MCP, and Ollama. The point is not to memorize tool names, but to understand how they can be combined into a workable process.</p>
-  </div>
-</article><article class="content-slide-card">
-  <div class="full-screen-image" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; margin: 2rem 0; page-break-after: always;">
-  <figure><img src="assets/capstone-formative-assessment-infographic.png" alt="Capstone formative assessment infographic" style="max-width: 100%; max-height: 100vh; object-fit: contain;" /></figure>
-</div>
-  <div class="slide-text">
-<h2 id="2-capstone-preview-formative-assessment-and-ai-assisted-teaching">2. Capstone Preview: Formative Assessment and AI-Assisted Teaching</h2>
-<p>The workshop series will end with an AI formative-assessment system as the capstone application. This example is not just an online quiz. It presents a complete teaching-tool scenario: the teacher side tracks class progress, the student side completes short quizzes and reviews responses, and AI helps turn wrong answers and teaching materials into follow-up learning directions.</p>
-<p>The point of formative assessment is not to make tests harder. It is to answer three classroom questions quickly: whether students understood the concept, which students or question types need more support, and what students should review next after answering.</p>
-<p>The example system includes a teacher dashboard and a student quiz interface. The teacher sees class-level status such as quiz progress, completion, accuracy, and submission state. The student side supports login, question-by-question answering, submission, score summary, and response review.</p>
-<p>AI is used as learning scaffolding, not as an answer machine. After students submit their work, their responses, question content, and material summary can be given to ChatGPT, Gemini, or another tool to analyze possible misconceptions, recommend review sections, and suggest next exercises.</p>
-<p>Reference: <a href="capstone-assessment-preview.html">AI Agent Teaching Applications Workshop Capstone Preview: Design Intent for a Formative Assessment System</a>.</p>
   </div>
 </article><article class="content-slide-card">
   <div class="full-screen-image" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; margin: 2rem 0; page-break-after: always;">
@@ -705,10 +694,22 @@
   <figure><img src="assets/repeatable-workflow-infographic.png" alt="From one-time operation to repeatable workflow infographic" style="max-width: 100%; max-height: 100vh; object-fit: contain;" /></figure>
 </div>
   <div class="slide-text">
-<h2 id="16-from-one-time-operation-to-repeatable-workflow">16. From One-Time Operation to Repeatable Workflow</h2>
+<h2 id="15-from-one-time-operation-to-repeatable-workflow">15. From One-Time Operation to Repeatable Workflow</h2>
 <p>A successful one-time operation is only the beginning. The real value is turning that success into a process that can be run again in the future.</p>
 <p>A repeatable workflow should describe the task goal, input conditions, steps, output location, and verification method. For example, a CSV download workflow should explain how to confirm the server is reachable, which URL to open, which course codes are supported, where to save the file, and how to verify the result.</p>
 <p>This turns an AI Agent from an on-the-spot chat helper into an accumulative work system. Each completed workflow can become part of the project and make the next task faster and more stable.</p>
+  </div>
+</article><article class="content-slide-card">
+  <div class="full-screen-image" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; margin: 2rem 0; page-break-after: always;">
+  <figure><img src="assets/capstone-formative-assessment-infographic.png" alt="Capstone formative assessment infographic" style="max-width: 100%; max-height: 100vh; object-fit: contain;" /></figure>
+</div>
+  <div class="slide-text">
+<h2 id="2-capstone-preview-formative-assessment-and-ai-assisted-teaching">16. Capstone Preview: Formative Assessment and AI-Assisted Teaching</h2>
+<p>The workshop series will end with an AI formative-assessment system as the capstone application. This example is not just an online quiz. It presents a complete teaching-tool scenario: the teacher side tracks class progress, the student side completes short quizzes and reviews responses, and AI helps turn wrong answers and teaching materials into follow-up learning directions.</p>
+<p>The point of formative assessment is not to make tests harder. It is to answer three classroom questions quickly: whether students understood the concept, which students or question types need more support, and what students should review next after answering.</p>
+<p>The example system includes a teacher dashboard and a student quiz interface. The teacher sees class-level status such as quiz progress, completion, accuracy, and submission state. The student side supports login, question-by-question answering, submission, score summary, and response review.</p>
+<p>AI is used as learning scaffolding, not as an answer machine. After students submit their work, their responses, question content, and material summary can be given to ChatGPT, Gemini, or another tool to analyze possible misconceptions, recommend review sections, and suggest next exercises.</p>
+<p>Reference: <a href="capstone-assessment-preview.html">AI Agent Teaching Applications Workshop Capstone Preview: Design Intent for a Formative Assessment System</a>.</p>
   </div>
 </article><article class="content-slide-card">
   <div class="full-screen-image" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; margin: 2rem 0; page-break-after: always;">
