@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="dark" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChatGPT Work 問卷 Workbook 分析實作指南</title>
+<style>:root{color-scheme:dark;--bg:#f4f1ea;--fg:#1f2328;--muted:#687180;--card:#ebe7df;--border:#d6d0c5;--accent:#2563eb;--th-bg:#ded8cc;--shadow:0 1px 3px rgba(44,38,28,.09);--sidebar-w:284px;--content-max:1040px;--content-pad-x:44px;--content-pad-y:42px;--measure:76ch}[data-theme="dark"]{--bg:#101217;--fg:#e7eaf0;--muted:#a5aebd;--card:#181c24;--border:#2a3140;--accent:#7bb2ff;--th-bg:#202632;--shadow:0 1px 3px rgba(0,0,0,.42)}html{scroll-behavior:smooth}*{box-sizing:border-box}body{min-width:0;margin:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Microsoft JhengHei",Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.76;letter-spacing:0;transition:background .25s,color .25s}.wrap{width:min(var(--content-max),calc(100vw - var(--sidebar-w) - (var(--content-pad-x) * 2)));margin-left:calc(var(--sidebar-w) + max(var(--content-pad-x),(100vw - var(--sidebar-w) - var(--content-max)) / 2));padding:var(--content-pad-y) var(--content-pad-x) 88px}.sidebar{position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;overflow-y:auto;background:var(--card);border-right:1px solid var(--border);display:flex;flex-direction:column;gap:10px;padding:18px 14px;z-index:30}.brand{font-weight:700;font-size:1rem;line-height:1.35;padding:0 6px}.toprow{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.navmode{display:flex;align-items:flex-start;gap:8px;margin:0 6px;color:var(--muted);font-size:13px;font-weight:650;line-height:1.35}.navmode input{width:16px;height:16px;margin:1px 0 0;accent-color:var(--accent)}.nav{display:flex;flex-direction:column;gap:4px;margin-top:6px}.navbtn,.navhome{cursor:pointer;border:1px solid transparent;background:transparent;color:var(--muted);border-radius:7px;padding:7px 10px;font-size:14px;font-weight:650;text-align:left;width:100%;white-space:normal;text-decoration:none}.navbtn:hover,.navbtn.active,.navhome:hover{color:var(--accent);border-color:var(--border);background:var(--bg)}.navhome{display:block;border-color:var(--border);background:var(--bg);color:var(--fg)}.btn{cursor:pointer;border:1px solid var(--border);background:var(--bg);color:var(--fg);border-radius:8px;padding:6px 12px;font-size:13px;font-weight:650}.btn:hover{border-color:var(--accent)}.menu-toggle{display:none;position:fixed;top:12px;left:12px;z-index:40;cursor:pointer;border:1px solid var(--border);background:var(--card);color:var(--fg);border-radius:8px;padding:6px 12px;font-size:18px;line-height:1}.backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.42);z-index:20}h1{max-width:var(--measure);font-size:2.15rem;line-height:1.28;margin:.2em 0 .35em}h2{font-size:1.48rem;margin-top:1.85em;padding-bottom:.25em;border-bottom:2px solid var(--border);scroll-margin-top:24px}h3{font-size:1.18rem;margin-top:1.55em;color:var(--accent)}h4{font-size:1.04rem;margin-top:1.25em;margin-bottom:.35em;color:var(--fg)}ul,ol{padding-left:1.3em}li{margin:.35em 0}p,li,blockquote{max-width:var(--measure);overflow-wrap:break-word}.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}table{width:100%;border-collapse:collapse;margin:1em 0;font-size:.94rem;box-shadow:var(--shadow);border-radius:8px;overflow:hidden}th,td{text-align:left;padding:10px 14px;border:1px solid var(--border);vertical-align:top}th{background:var(--th-bg);font-weight:750}td:first-child,th:first-child{white-space:nowrap}tbody tr:nth-child(even) td{background:var(--card)}figure{max-width:100%;margin:1.1em 0 1.35em;padding:10px;background:var(--card);border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow)}figure img{display:block;width:100%;height:auto;border-radius:6px}blockquote{margin:1.1em 0;padding:12px 16px;border-left:4px solid var(--accent);background:var(--card);color:var(--fg)}pre{overflow:auto;white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere;padding:12px 14px;background:var(--card);border:1px solid var(--border);border-radius:8px}code{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size:.92em;color:var(--fg);background:var(--card);border:1px solid var(--border);border-radius:6px;padding:.08em .35em}pre code{border:0;padding:0;background:transparent}.nav code{border:0;background:transparent;color:inherit;padding:0}.site-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:1.2em 0}.site-card{display:flex;flex-direction:column;gap:6px;min-height:142px;padding:14px 16px;border:1px solid var(--border);border-radius:8px;background:var(--card);box-shadow:var(--shadow);text-decoration:none;color:var(--fg)}.site-card:hover{border-color:var(--accent)}.site-card strong{font-size:1.03rem;color:var(--fg)}.site-card span{color:var(--muted)}.download-list{display:grid;gap:8px;max-width:var(--measure);padding-left:0;list-style:none}.download-list a{display:block;padding:10px 12px;border:1px solid var(--border);border-radius:8px;background:var(--card);text-decoration:none}.download-list small{display:block;color:var(--muted)}table,pre{max-width:100%}a{color:var(--accent);overflow-wrap:anywhere}[data-lang="zh"] .en,[data-lang="en"] .zh{display:none}footer{margin-top:3em;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border);padding-top:1em}@media (min-width:1440px){:root{--sidebar-w:304px;--content-max:1080px;--content-pad-x:54px;--content-pad-y:48px}}@media (max-width:1100px){:root{--sidebar-w:230px;--content-max:840px;--content-pad-x:28px;--content-pad-y:32px}.sidebar{padding:16px 10px}.brand{font-size:.95rem}.navbtn,.navhome{font-size:13px;padding:7px 8px}}@media (max-width:860px){:root{--sidebar-w:min(82vw,320px);--content-pad-x:18px;--content-pad-y:0px;--measure:100%}.sidebar{transform:translateX(-100%);transition:transform .25s}.sidebar.open{transform:none}.wrap{width:100%;margin-left:0;padding:72px var(--content-pad-x) 80px}.menu-toggle{display:block}.backdrop.show{display:block}h1{font-size:1.75rem}h2{font-size:1.26rem}h3{font-size:1.08rem}p,li,blockquote{max-width:100%}.site-grid{grid-template-columns:1fr}}@media (max-width:520px){:root{--sidebar-w:min(88vw,300px);--content-pad-x:14px}.wrap{padding-top:68px}.menu-toggle{top:10px;left:10px;padding:7px 11px}.sidebar{padding:14px 10px}.toprow{gap:6px}.btn{padding:6px 10px;font-size:12px}.navmode{font-size:12px}.navbtn,.navhome{font-size:13px}h1{font-size:1.55rem}h2{font-size:1.18rem}th,td{padding:8px 10px}}</style>
+</head>
+<body>
+<button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" type="button">☰</button>
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><span class="zh">ChatGPT Work 問卷 Workbook 分析實作指南</span><span class="en">ChatGPT Work Questionnaire Workbook Analysis Practice Guide</span></div>
+  <div class="toprow"><button class="btn" id="langBtn" onclick="toggleLang()" type="button">English</button><button class="btn" id="themeBtn" onclick="toggleTheme()" type="button">☀️ Light</button></div>
+  <label class="navmode"><input id="slideNavMode" onchange="buildSpy()" type="checkbox"><span><span class="zh">導覽反思投影片</span><span class="en">Navigate reflection slides</span></span></label>
+  <a class="navhome return-control" href="../index.html" aria-label="返回上一層 / Back to parent"><span class="zh">返回上一層</span><span class="en">Back to parent</span></a>
+  <nav class="nav"><button class="navbtn" onclick="gotoSection(0)" type="button"><span class="zh">從資料結構到前測信效度報告</span><span class="en">From Data Structure to Pre-Test Reliability and Validity Report</span></button>
+<button class="navbtn" onclick="gotoSection(1)" type="button"><span class="zh">練習目標</span><span class="en">Practice Goals</span></button>
+<button class="navbtn" onclick="gotoSection(2)" type="button"><span class="zh">練習資料</span><span class="en">Practice Data</span></button>
+<button class="navbtn" onclick="gotoSection(3)" type="button"><span class="zh">工具準備</span><span class="en">Tool Preparation</span></button>
+<button class="navbtn" onclick="gotoSection(4)" type="button"><span class="zh">Step 1：選擇 ChatGPT Work 或 Codex</span><span class="en">Step 1: Choose ChatGPT Work or Codex</span></button>
+<button class="navbtn" onclick="gotoSection(5)" type="button"><span class="zh">Step 2：使用 ChatGPT Work 判讀 workbook 結構</span><span class="en">Step 2: Use ChatGPT Work to read the workbook structure</span></button>
+<button class="navbtn" onclick="gotoSection(6)" type="button"><span class="zh">Step 3：使用 ChatGPT Work 建立結果表 schema</span><span class="en">Step 3: Use ChatGPT Work to build a result-table schema</span></button>
+<button class="navbtn" onclick="gotoSection(7)" type="button"><span class="zh">Step 4：使用 ChatGPT Work 完成結果表與報告</span><span class="en">Step 4: Use ChatGPT Work to finish the result table and report</span></button>
+<button class="navbtn" onclick="gotoSection(8)" type="button"><span class="zh">Step 5：使用 ChatGPT Work 分析前測信效度</span><span class="en">Step 5: Use ChatGPT Work to analyze pre-test reliability and validity</span></button>
+<button class="navbtn" onclick="gotoSection(9)" type="button"><span class="zh">Step 6：使用 ChatGPT Work 整理成果與限制</span><span class="en">Step 6: Use ChatGPT Work to organize findings and limitations</span></button>
+<button class="navbtn" onclick="gotoSection(10)" type="button"><span class="zh">時間允許的延伸練習：處理 post-test.xlsx 並做 paired t-test</span><span class="en">Time允許的延伸practice：處理 post-test.xlsx 並做 paired t-test</span></button>
+<button class="navbtn" onclick="gotoSection(11)" type="button"><span class="zh">反思問題</span><span class="en">Reflection Questions</span></button></nav>
+</aside>
+<div class="backdrop" id="backdrop" onclick="toggleMenu()"></div>
+<div class="wrap">
+  <section class="zh"><h1 id="codex-workbook">ChatGPT Work 問卷 Workbook 分析實作指南</h1>
+<h2 id="_1">從資料結構到前測信效度報告</h2>
+<p>本練習以 <strong>ChatGPT Work 為主要操作路徑</strong>。學員會讓 ChatGPT Work 讀取 <code>pre-test.xlsx</code>，循序整理 workbook 結構、抽取重要欄位、轉換題目分數，並完成可檢視的結果表與分析報告。如果時間允許，再繼續處理 <code>post-test.xlsx</code>，並做前後測共同填答者的 paired t-test。需要可重複執行腳本或技術檢查時，再改用 Codex。</p>
+<h2 id="_2">練習目標</h2>
+<p>完成本模組後，你應該能夠：</p>
+<ul>
+<li>說明 Chat、ChatGPT Work 與 Codex 在問卷資料分析任務中的選擇方式。</li>
+<li>使用 ChatGPT Work 讀取完整 Excel workbook，進行引導式分析與完成報告。</li>
+<li>要求 ChatGPT Work 判讀工作表、header row、基本資料欄位與題目欄位。</li>
+<li>要求 ChatGPT Work 抽取重要資料並建立去識別化的受試者層級資料表。</li>
+<li>要求 ChatGPT Work 將原始選項編號轉換為可分析的 Likert 分數。</li>
+<li>要求 ChatGPT Work 產生前測資料的信度與效度分析報告。</li>
+<li>在時間允許時，延伸到後測資料與 paired t-test。</li>
+</ul>
+<h2 id="_3">練習資料</h2>
+<p>先確認本資料夾中有以下檔案：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>檔案</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pre-test.xlsx</code></td>
+<td>請由講師另行放入 <code>data/</code> 的去識別化前測問卷 workbook</td>
+</tr>
+<tr>
+<td><code>post-test.xlsx</code></td>
+<td>請由講師另行放入 <code>data/</code> 的去識別化延伸練習資料</td>
+</tr>
+</tbody>
+</table></div>
+<p>本次課堂主要完成 <code>pre-test.xlsx</code>。<code>post-test.xlsx</code> 與 paired t-test 放在延伸練習，不作為基本完成門檻。</p>
+<blockquote>
+<p>檔案說明：在 ChatGPT Work 上傳去識別化的 <code>pre-test.xlsx</code> 即可開始；如果改用 Codex，再把 prompt 中的路徑改為相對於所選專案工作區的寫法，例如 <code>data/pre-test.xlsx</code> 或 <code>pre-test.xlsx</code>。</p>
+</blockquote>
+<h2 id="_4">工具準備</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>本模組用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ChatGPT 桌面 app</td>
+<td>從同一個 app 進入 Chat、ChatGPT Work 或 Codex；本練習從產品選單選擇 ChatGPT Work。</td>
+</tr>
+<tr>
+<td>ChatGPT Work</td>
+<td>主要實作工具：引導式分析 workbook、整理結果表、產生可檢視的完成報告</td>
+</tr>
+<tr>
+<td>Codex（選用）</td>
+<td>需要寫入、執行與檢查可重複使用的 Python／HTML 流程時使用</td>
+</tr>
+<tr>
+<td>VS Code 或文字編輯器</td>
+<td>查看 Markdown、Python、HTML 與輸出檔</td>
+</tr>
+<tr>
+<td>瀏覽器</td>
+<td>開啟或檢視 ChatGPT Work 產生的結果表與分析報告</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="step-1-chatgpt">Step 1：選擇 ChatGPT Work 或 Codex</h2>
+<h3 id="_5">教師說明重點</h3>
+<p>先開啟 <strong>ChatGPT 桌面 app</strong>，再從產品選單依任務選擇介面：<strong>Chat</strong> 適合快速釐清資料結構或分析方向；本練習以 <strong>ChatGPT Work</strong> 為主，適合循序完成問卷分析並交付可檢視的結果與報告；<strong>Codex</strong> 則保留給需要技術細節、可重複執行腳本與專案檔案管理的情況。可用功能會依方案、組織設定與推出狀態而不同。</p>
+<h3>ChatGPT Work 與 Codex 的差異</h3>
+<div class="table-wrap"><table><thead><tr><th>選擇</th><th>適合這堂課的情況</th><th>學員要看到的內容</th></tr></thead><tbody><tr><td>ChatGPT Work</td><td>主要路徑：上傳去識別化 workbook，進行引導式分析與完成報告。</td><td>非技術性的步驟說明、結果表、重點解讀與可審閱的成品。</td></tr><tr><td>Codex</td><td>延伸路徑：需要將相同流程寫成 Python／HTML，並再次執行或檢查。</td><td>專案檔案、指令、差異檢視與技術細節。</td></tr></tbody></table></div>
+<ul>
+<li>ChatGPT Work 可以在可用且已核准時使用檔案與工具；它不是只能輸出文字。</li>
+<li>使用 Work 時只上傳去識別化 workbook；使用 Codex 時只選擇這堂課的專案資料夾，不要加入其他課程、個人檔案或整個使用者目錄。</li>
+<li>若改用 Codex，請使用 <strong>先要求核准（Ask for approval）</strong>，不要預設啟用 <strong>完整存取權（Full access）</strong>；它不會只限於目前專案資料夾。</li>
+<li>不論選哪一種介面，都要先確認 workbook 已去識別化，並在核准前檢查檔案、工具權限與預計產出的位置。</li>
+</ul>
+<h2 id="step-2-codex-pre-testxlsx-workbook">Step 2：讓 ChatGPT Work 判讀 <code>pre-test.xlsx</code> workbook 結構</h2>
+<h3 id="_6">你要做什麼</h3>
+<p>讓 ChatGPT Work 先只分析 workbook schema，不要急著產生統計結論。這一步的目標是確認資料來源、工作表、header row、基本資料欄位與題目欄位。</p>
+<h3 id="codex-prompt">🔹 可直接使用的 ChatGPT Work prompt</h3>
+<pre><code class="language-text">讀取 workshop-materials-md/module2/data/pre-test.xlsx，
+分析這份前測問卷 workbook 的結構。
+
+列出工作表、主要分析來源、header row、基本資料欄位、Q1 到 Q16 題目欄位，
+並判斷原始選項編號能不能直接當成 Likert 分數。
+</code></pre>
+<h3 id="_7">檢查重點</h3>
+<p>ChatGPT Work 的回答至少要包含：</p>
+<ul>
+<li>workbook 中有四個工作表。</li>
+<li>真正欄位名稱位於第 2 列，第 1 列是標題列。</li>
+<li>主要分析來源應使用 <code>答題記錄(選項編號)</code>。</li>
+<li>基本資料欄位包含 <code>帳號</code>、<code>姓名</code>、<code>單位</code>、<code>填寫時間</code>。</li>
+<li>題目欄位範圍為 <code>Q1</code> 到 <code>Q16</code>。</li>
+<li>原始選項編號不是最後可分析分數。</li>
+</ul>
+<h2 id="step-3-codex-schema">Step 3：讓 ChatGPT Work 抽取重要資料並建立結果表 schema</h2>
+<h3 id="_8">你要做什麼</h3>
+<p>確認 workbook 結構後，讓 ChatGPT Work 規劃受試者層級結果表。這一步仍先規劃欄位，不直接做報告。</p>
+<p>本練習指定分數轉換規則：</p>
+<pre><code class="language-text">Likert score = 8 - option_number
+</code></pre>
+<p>本練習指定四個構面：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>構面</th>
+<th>題目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IM</td>
+<td>Q1, Q5, Q9, Q13</td>
+</tr>
+<tr>
+<td>IR</td>
+<td>Q2, Q6, Q10, Q14</td>
+</tr>
+<tr>
+<td>ER</td>
+<td>Q3, Q7, Q11, Q15</td>
+</tr>
+<tr>
+<td>AM</td>
+<td>Q4, Q8, Q12, Q16</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="codex-prompt_1">🔹 可直接使用的 ChatGPT Work prompt</h3>
+<pre><code class="language-text">規劃一份去識別化的受試者層級結果表。
+
+每列代表一位填答者，不放姓名與帳號。
+Q1 到 Q16 使用 score = 8 - option_number 轉成 Likert 分數。
+
+加入四個構面平均：
+IM = Q1, Q5, Q9, Q13
+IR = Q2, Q6, Q10, Q14
+ER = Q3, Q7, Q11, Q15
+AM = Q4, Q8, Q12, Q16
+
+先列出結果表 schema。
+</code></pre>
+<h3 id="schema">預期 schema</h3>
+<pre><code class="language-text">id, Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8,
+Q9, Q10, Q11, Q12, Q13, Q14, Q15, Q16,
+im, ir, er, am
+</code></pre>
+<h3 id="_9">檢查重點</h3>
+<ul>
+<li><code>id</code> 是去識別化代碼。</li>
+<li><code>Q1</code> 到 <code>Q16</code> 都是轉換後 Likert 分數。</li>
+<li><code>im</code>、<code>ir</code>、<code>er</code>、<code>am</code> 使用指定題號計算。</li>
+<li>ChatGPT Work 不應自行新增構面。</li>
+<li>ChatGPT Work 不應把姓名、帳號放進公開結果表。</li>
+</ul>
+<h2 id="step-4-codex">Step 4：讓 ChatGPT Work 完成結果表與報告</h2>
+<h3 id="_10">你要做什麼</h3>
+<p>讓 ChatGPT Work 將已確認的資料抽取與分數轉換整理成結果表，並完成可審閱的分析報告。本課的主要成果是引導式分析與完成報告；若需要可重複執行的 Python／HTML 腳本，再使用 Codex 延伸。</p>
+<h3 id="codex-prompt_2">🔹 可直接使用的 ChatGPT Work prompt</h3>
+<pre><code class="language-text">根據剛才確認的 pre-test.xlsx workbook 結構，
+整理去識別化的受試者層級結果表，並完成一份可審閱的前測分析報告。
+
+使用「答題記錄(選項編號)」與第 2 列 header row，
+將 Q1 到 Q16 轉成 Likert 分數，計算 im, ir, er, am。
+
+先呈現結果表的欄位與摘要，再用台灣中文說明資料檢查、主要發現與小樣本限制。
+不要顯示姓名、帳號或其他可識別資料。
+</code></pre>
+<h3 id="_11">檢查重點</h3>
+<ul>
+<li>結果表與報告可供學員或教師審閱。</li>
+<li>表格欄位符合 Step 3 的 schema。</li>
+<li>所有題目欄位已套用 <code>score = 8 - option_number</code>。</li>
+<li>公開輸出沒有包含姓名、帳號等可識別資料。</li>
+</ul>
+<h2 id="step-5-codex">Step 5：讓 ChatGPT Work 對前測資料做信度與效度分析</h2>
+<h3 id="_12">你要做什麼</h3>
+<p>當結果表確認正確後，再讓 ChatGPT Work 產生簡短的信度與資料檢查報告。課堂示範以資料檢查與 Cronbach alpha 為主。</p>
+<p>解讀構面意義時，可參考 <a href="https://selfdeterminationtheory.org/SDT/documents/2000_GuayVallerandBlanchard_MO.pdf" target="_blank" rel="noopener noreferrer">Guay, Vallerand, and Blanchard (2000) 的情境動機量表論文</a>，用來整理 IM、IR、ER、AM 這些構面在本次問卷資料中的意義。</p>
+<h3 id="codex-prompt_3">🔹 可直接使用的 ChatGPT Work prompt</h3>
+<pre><code class="language-text">根據剛才產生的 pre-test 轉換後 Likert 結果表，
+進行前測問卷的信度與效度分析。
+
+報告需求：
+1. 輸出為深色主題 HTML：pre-test-validity-reliability.html。
+2. 預設使用台灣中文，並提供 English UI 切換。
+3. 報告開頭要有分析結果概覽。
+4. 至少包含：
+   - 資料檢查
+   - Cronbach alpha
+5. 參考 https://selfdeterminationtheory.org/SDT/documents/2000_GuayVallerandBlanchard_MO.pdf，
+   整理 IM、IR、ER、AM 各構面的意義，並說明本次收集到的問卷資料可以如何解讀。
+6. 提醒本次樣本數小，結果只能視為課堂或工作坊層級的初步篩檢訊號，不是正式量表驗證。
+</code></pre>
+<h3 id="_13">檢查重點</h3>
+<ul>
+<li>報告有清楚的中文概覽。</li>
+<li>English 切換後，主要 UI 不應殘留中文介面文字。</li>
+<li>報告清楚標示樣本數。</li>
+<li>信度與效度結果有文字解釋，不只是表格。</li>
+<li>報告有提醒小樣本限制。</li>
+</ul>
+<h2 id="step-6-codex">Step 6：讓 ChatGPT Work 整理分析成果與限制</h2>
+<h3 id="_14">你要做什麼</h3>
+<p>最後讓 ChatGPT Work 把目前完成的前測分析整理成「已完成」與「限制」兩部分。這可以當作課堂收尾，也能提醒學員不要把小樣本分析誤解為正式量表驗證。</p>
+<h3 id="codex-prompt_4">🔹 可直接使用的 ChatGPT Work prompt</h3>
+<pre><code class="language-text">整理本次 pre-test.xlsx 分析成果。
+
+分成兩部分：
+1. 已完成：workbook 結構、重要資料抽取、分數轉換、構面平均、HTML 結果表、信度分析報告。
+2. 下一步：樣本數限制、後測資料尚未處理、時間允許時可做 paired t-test。
+</code></pre>
+<h3 id="_15">檢查重點</h3>
+<ul>
+<li>已完成事項應能對應到實際產出檔案。</li>
+<li>限制不能被寫成已解決問題。</li>
+<li>後測與 paired t-test 應放在下一步，不要混入前測報告。</li>
+</ul>
+<h2 id="post-testxlsx-paired-t-test">時間允許的延伸練習：處理 <code>post-test.xlsx</code> 並做 paired t-test</h2>
+<p>如果前測結果表與信效度報告已完成，可以建議學員繼續處理 <code>post-test.xlsx</code>。延伸練習分成兩段：先產生後測結果表，再做前後測共同填答者的 paired t-test。</p>
+<h3 id="prompt-1">🔹 延伸 prompt 1：產生後測結果表</h3>
+<pre><code class="language-text">將 pre-test.xlsx 的資料處理流程套用到
+workshop-materials-md/module2/data/post-test.xlsx。
+
+使用相同規則產生去識別化後測結果表，
+並輸出 HTML：post-test-result-table.html。
+</code></pre>
+<h3 id="prompt-2-paired-t-test">🔹 延伸 prompt 2：進行 paired t-test</h3>
+<pre><code class="language-text">根據 pre-test 與 post-test 的結果表，
+找出前後測共同填答者，並針對 im, ir, er, am 四個構面進行 paired t-test。
+
+輸出共同填答者人數、各構面的前後測平均、平均差、p 值，
+並用一小段文字提醒小樣本限制。
+</code></pre>
+<h2 id="_17">反思問題</h2>
+<ol>
+<li>ChatGPT Work 如何一步一步引導你完成問卷分析與報告？</li>
+<li>為什麼原始選項編號不能直接當作 Likert 分數？</li>
+<li>你會如何檢查 ChatGPT Work 是否把題目放進正確構面？</li>
+<li>如果要把這套流程用在自己的課程問卷，你需要先移除哪些個人資料？</li>
+</ol></section>
+  <section class="en"><h1 id="codex-questionnaire-workbook-analysis-practice-guide">ChatGPT Work Questionnaire Workbook Analysis Practice Guide</h1>
+<h2 id="from-data-structure-to-pre-test-reliability-and-validity-report">From Data Structure to Pre-Test Reliability and Validity Report</h2>
+<p>Use ChatGPT Work as the primary path for <strong>Guided analysis and a finished report</strong>. It can read the de-identified <code>pre-test.xlsx</code>, guide the analysis step by step, and present a reviewable result. Use Codex only when you need reusable scripts, project files, or technical verification.</p>
+<h2 id="practice-goals">Practice Goals</h2>
+<p>完成本模組後，你應該能夠：</p>
+<ul>
+<li>Explain how to choose Chat, ChatGPT Work, or Codex for questionnaire data analysis.</li>
+<li>使用 Codex 讀取專案中的完整 Excel workbook。</li>
+<li>要求 Codex 判讀工作表、header row、基本data欄位與題目欄位。</li>
+<li>要求 Codex 抽取重要data並建立去識別化的受試者層級data表。</li>
+<li>要求 Codex 將原始選項編號轉換為可analysis的 Likert 分數。</li>
+<li>要求 Codex 產生pre-testdata的reliability與validityanalysis HTML 報告。</li>
+<li>在Time允許時，延伸到post-testdata與 paired t-test。</li>
+</ul>
+<h2 id="practice-data">Practice Data</h2>
+<p>先確認本資料夾中有以下檔案：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>檔案</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pre-test.xlsx</code></td>
+<td>Instructor-provided de-identified workbook placed in <code>data/</code></td>
+</tr>
+<tr>
+<td><code>post-test.xlsx</code></td>
+<td>Instructor-provided de-identified extension-practice workbook placed in <code>data/</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>本次課堂主要完成 <code>pre-test.xlsx</code>。<code>post-test.xlsx</code> 與 paired t-test 放在延伸練習，不作為基本完成門檻。</p>
+<blockquote>
+<p>路徑說明：本指南中的 Codex prompt 使用 <code>workshop-materials-md/module2/data/pre-test.xlsx</code> 這類路徑，是以工作坊根資料夾（<code>workshop-materials-md</code> 的上一層）作為 Codex 工作區為前提。若你的工作區直接開在 <code>module2</code> 或 <code>module2/data</code>，請把 prompt 中的路徑改成相對於目前工作區的寫法，例如 <code>data/pre-test.xlsx</code> 或 <code>pre-test.xlsx</code>。開始前先確認 Codex 目前綁定的工作區，再對照使用。</p>
+</blockquote>
+<h2 id="tool-preparation">Tool Preparation</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>本模組用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ChatGPT desktop app</td>
+<td>Use one app to enter Chat, ChatGPT Work, or Codex; choose ChatGPT Work from the product picker for this exercise.</td>
+</tr>
+<tr>
+<td>ChatGPT Work</td>
+<td>Primary tool for guided analysis, result tables, and a finished report.</td>
+</tr>
+<tr>
+<td>Codex (optional)</td>
+<td>Use for reusable scripts, project files, commands, and technical verification.</td>
+</tr>
+<tr>
+<td>VS Code 或文字編輯器</td>
+<td>查看 Markdown、Python、HTML 與輸出檔</td>
+</tr>
+<tr>
+<td>瀏覽器</td>
+<td>Review the results table and final report from ChatGPT Work.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="step-1-explain-chatgpts-limits">Step 1: Choose ChatGPT Work or Codex</h2>
+<h3 id="teachers">Key setup points</h3>
+<p>Open the <strong>ChatGPT desktop app</strong>. Choose <strong>ChatGPT Work</strong> for this exercise: it is the primary path for guided analysis and a finished report. Use <strong>Codex</strong> only when the same work needs reusable scripts, project files, commands, or technical verification. Available features can vary by plan, organization settings, and rollout status.</p>
+<h3>ChatGPT Work versus Codex</h3>
+<div class="table-wrap"><table><thead><tr><th>Surface</th><th>Best use in this lesson</th><th>What the learner sees</th></tr></thead><tbody><tr><td>ChatGPT Work</td><td>Primary: upload a de-identified workbook, follow guided analysis, and finish a report.</td><td>Plain-language steps, findings, result tables, and a reviewable final output.</td></tr><tr><td>Codex</td><td>Optional extension: create, run, and check a Python/HTML workflow.</td><td>Project files, commands, diffs, and technical details.</td></tr></tbody></table></div>
+<ul>
+<li>In Work, upload only the de-identified workbook. In Codex, select only the course-project folder; do not add unrelated courses, personal files, or the whole user directory.</li>
+<li>When using Codex, use <strong>Ask for approval</strong> and review each command, file access, and proposed output before approving it.</li>
+<li>Do not enable <strong>Full access</strong> by default: it is not restricted to the current project directory. Use only de-identified workbooks and inspect file and tool permissions before approval.</li>
+</ul>
+<h2 id="step-2-codex-pre-testxlsx-workbook">Step 2：讓 ChatGPT Work 判讀 pre-test.xlsx workbook 結構</h2>
+<h3 id="_1">你要做什麼</h3>
+<p>讓 ChatGPT Work 先只分析 workbook schema，不要急著產生統計結論。這一步的目標是確認資料來源、工作表、header row、基本資料欄位與題目欄位。</p>
+<h3 id="codex-prompt">🔹 可直接使用的 ChatGPT Work prompt</h3>
+<pre><code class="language-text">讀取 workshop-materials-md/module2/data/pre-test.xlsx，
+分析這份前測問卷 workbook 的結構。
+
+列出工作表、主要分析來源、header row、基本資料欄位、Q1 到 Q16 題目欄位，
+並判斷原始選項編號能不能直接當成 Likert 分數。
+</code></pre>
+<h3 id="check">check重點</h3>
+<p>ChatGPT Work 的回答至少要包含：</p>
+<ul>
+<li>workbook 中有四個工作表。</li>
+<li>真正欄位名稱位於第 2 列，第 1 列是標題列。</li>
+<li>主要analysis來源應使用 <code>答題記錄(選項編號)</code>。</li>
+<li>基本data欄位包含 <code>帳號</code>、<code>姓名</code>、<code>單位</code>、<code>填寫Time</code>。</li>
+<li>題目欄位範圍為 <code>Q1</code> 到 <code>Q16</code>。</li>
+<li>原始選項編號不是最後可analysis分數。</li>
+</ul>
+<h2 id="step-3-ask-codex-to-extract-key-data-and-build-a-result-table-schema">Step 3: Use ChatGPT Work to build a result-table schema</h2>
+<h3 id="_2">你要做什麼</h3>
+<p>確認 workbook 結構後，讓 ChatGPT Work 規劃受試者層級結果表。這一步仍先規劃欄位，不直接做報告。</p>
+<p>本練習指定分數轉換規則：</p>
+<pre><code class="language-text">Likert score = 8 - option_number
+</code></pre>
+<p>本練習指定四個構面：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>構面</th>
+<th>題目</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IM</td>
+<td>Q1, Q5, Q9, Q13</td>
+</tr>
+<tr>
+<td>IR</td>
+<td>Q2, Q6, Q10, Q14</td>
+</tr>
+<tr>
+<td>ER</td>
+<td>Q3, Q7, Q11, Q15</td>
+</tr>
+<tr>
+<td>AM</td>
+<td>Q4, Q8, Q12, Q16</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="codex-prompt_1">🔹 可直接使用的 ChatGPT Work prompt</h3>
+<pre><code class="language-text">規劃一份去識別化的受試者層級結果表。
+
+每列代表一位填答者，不放姓名與帳號。
+Q1 到 Q16 使用 score = 8 - option_number 轉成 Likert 分數。
+
+加入四個構面平均：
+IM = Q1, Q5, Q9, Q13
+IR = Q2, Q6, Q10, Q14
+ER = Q3, Q7, Q11, Q15
+AM = Q4, Q8, Q12, Q16
+
+先列出結果表 schema。
+</code></pre>
+<h3 id="schema">預期 schema</h3>
+<pre><code class="language-text">id, Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8,
+Q9, Q10, Q11, Q12, Q13, Q14, Q15, Q16,
+im, ir, er, am
+</code></pre>
+<h3 id="check_1">check重點</h3>
+<ul>
+<li><code>id</code> 是去識別化代碼。</li>
+<li><code>Q1</code> 到 <code>Q16</code> 都是轉換後 Likert 分數。</li>
+<li><code>im</code>、<code>ir</code>、<code>er</code>、<code>am</code> 使用指定題號計算。</li>
+<li>ChatGPT Work 不應自行新增構面。</li>
+<li>ChatGPT Work 不應把姓名、帳號放進公開結果表。</li>
+</ul>
+<h2 id="step-4-ask-codex-to-produce-a-repeatable-data-extraction-workflow">Step 4: Use ChatGPT Work to finish the result table and report</h2>
+<h3 id="_3">你要做什麼</h3>
+<p>讓 ChatGPT Work 把資料抽取與分數轉換寫成可重複執行的腳本，並輸出 HTML 結果表。</p>
+<h3 id="codex-prompt_2">🔹 可直接使用的 ChatGPT Work prompt</h3>
+<pre><code class="language-text">將 pre-test.xlsx 的資料抽取與分數轉換流程寫成可重複執行的 Python 腳本。
+
+讀取 workshop-materials-md/module2/data/pre-test.xlsx，
+使用「答題記錄(選項編號)」，處理第 2 列 header row，
+將 Q1 到 Q16 轉成 Likert 分數，計算 im, ir, er, am，
+並輸出深色主題 HTML：pre-test-result-table.html。
+
+完成後說明腳本與 HTML 輸出位置。
+</code></pre>
+<h3 id="check_2">check重點</h3>
+<ul>
+<li>腳本可再次執行。</li>
+<li>HTML 表格可用瀏覽器開啟。</li>
+<li>表格欄位符合 Step 3 的 schema。</li>
+<li>所有題目欄位已套用 <code>score = 8 - option_number</code>。</li>
+<li>公開輸出沒有包含姓名、帳號等可識別data。</li>
+</ul>
+<h2 id="step-5-ask-codex-to-analyze-pre-test-reliability-and-validity">Step 5: Use ChatGPT Work to analyze pre-test reliability and validity</h2>
+<h3 id="_4">你要做什麼</h3>
+<p>當結果表確認正確後，再讓 ChatGPT Work 產生簡短的信度與資料檢查報告。課堂示範以資料檢查與 Cronbach alpha 為主。</p>
+<p>解讀構面意義時，可參考 <a href="https://selfdeterminationtheory.org/SDT/documents/2000_GuayVallerandBlanchard_MO.pdf" target="_blank" rel="noopener noreferrer">Guay, Vallerand, and Blanchard (2000) 的情境動機量表論文</a>，用來整理 IM、IR、ER、AM 這些構面在本次問卷資料中的意義。</p>
+<h3 id="codex-prompt_3">🔹 可直接使用的 ChatGPT Work prompt</h3>
+<pre><code class="language-text">根據剛才產生的 pre-test 轉換後 Likert 結果表，
+進行前測問卷的信度與效度分析。
+
+報告需求：
+1. 輸出為深色主題 HTML：pre-test-validity-reliability.html。
+2. 預設使用台灣中文，並提供 English UI 切換。
+3. 報告開頭要有分析結果概覽。
+4. 至少包含：
+   - 資料檢查
+   - Cronbach alpha
+5. 參考 https://selfdeterminationtheory.org/SDT/documents/2000_GuayVallerandBlanchard_MO.pdf，
+   整理 IM、IR、ER、AM 各構面的意義，並說明本次收集到的問卷資料可以如何解讀。
+6. 提醒本次樣本數小，結果只能視為課堂或工作坊層級的初步篩檢訊號，不是正式量表驗證。
+</code></pre>
+<h3 id="check_3">check重點</h3>
+<ul>
+<li>報告有清楚的中文概覽。</li>
+<li>English 切換後，主要 UI 不應殘留中文介面文字。</li>
+<li>報告清楚標示樣本數。</li>
+<li>reliability與validity結果有文字解釋，不只是表格。</li>
+<li>報告有提醒小樣本限制。</li>
+</ul>
+<h2 id="step-6-ask-codex-to-organize-findings-and-limitations">Step 6: Use ChatGPT Work to organize findings and limitations</h2>
+<h3 id="_5">你要做什麼</h3>
+<p>最後讓 ChatGPT Work 把目前完成的前測分析整理成「已完成」與「限制」兩部分。這可以當作課堂收尾，也能提醒學員不要把小樣本分析誤解為正式量表驗證。</p>
+<h3 id="codex-prompt_4">🔹 可直接使用的 ChatGPT Work prompt</h3>
+<pre><code class="language-text">整理本次 pre-test.xlsx 分析成果。
+
+分成兩部分：
+1. 已完成：workbook 結構、重要資料抽取、分數轉換、構面平均、HTML 結果表、信度分析報告。
+2. 下一步：樣本數限制、後測資料尚未處理、時間允許時可做 paired t-test。
+</code></pre>
+<h3 id="check_4">check重點</h3>
+<ul>
+<li>已完成事項應能對應到實際產出檔案。</li>
+<li>限制不能被寫成已解決問題。</li>
+<li>post-test與 paired t-test 應放在下一步，不要混入pre-test報告。</li>
+</ul>
+<h2 id="timepractice-post-testxlsx-paired-t-test">Time允許的延伸practice：處理 post-test.xlsx 並做 paired t-test</h2>
+<p>如果前測結果表與信效度報告已完成，可以建議學員繼續處理 <code>post-test.xlsx</code>。延伸練習分成兩段：先產生後測結果表，再做前後測共同填答者的 paired t-test。</p>
+<h3 id="prompt-1post-test">🔹 延伸 prompt 1：產生post-test結果表</h3>
+<pre><code class="language-text">將 pre-test.xlsx 的資料處理流程套用到
+workshop-materials-md/module2/data/post-test.xlsx。
+
+使用相同規則產生去識別化後測結果表，
+並輸出 HTML：post-test-result-table.html。
+</code></pre>
+<h3 id="prompt-2-paired-t-test">🔹 延伸 prompt 2：進行 paired t-test</h3>
+<pre><code class="language-text">根據 pre-test 與 post-test 的結果表，
+找出前後測共同填答者，並針對 im, ir, er, am 四個構面進行 paired t-test。
+
+輸出共同填答者人數、各構面的前後測平均、平均差、p 值，
+並用一小段文字提醒小樣本限制。
+</code></pre>
+<h2 id="reflection-questions">Reflection Questions</h2>
+<ol>
+<li>Codex 在這個任務中完成了哪些實際檔案操作？</li>
+<li>為什麼原始選項編號不能直接當作 Likert 分數？</li>
+<li>你會如何檢查 Codex 是否把題目放進正確構面？</li>
+<li>如果要把這套流程用在自己的課程問卷，你需要先移除哪些個人資料？</li>
+</ol></section>
+  <footer>智慧雨林產業創生人才育成計畫 (南臺科技大學 電子系 楊榮林 教授)</footer>
+</div>
+<script>function currentSection(){const lang=document.documentElement.getAttribute('data-lang');return document.querySelector('section.'+lang)}function navUsesSlides(){const box=document.getElementById('slideNavMode');return !!(box&&box.checked)}function targetForHead(head){if(!navUsesSlides())return head;const prev=head.previousElementSibling;if(prev&&(prev.classList.contains('full-screen-image')||prev.querySelector('img')))return prev;return head}function navTargets(){const section=currentSection();if(!section)return[];return[...section.querySelectorAll('h2')].map(targetForHead)}function gotoSection(i){const targets=navTargets();if(targets[i])targets[i].scrollIntoView({behavior:'smooth',block:'start'});closeMenu()}function toggleMenu(){document.getElementById('sidebar').classList.toggle('open');document.getElementById('backdrop').classList.toggle('show')}function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('backdrop').classList.remove('show')}let spy;function buildSpy(){if(spy)spy.disconnect();const targets=navTargets();const btns=[...document.querySelectorAll('.nav .navbtn')];spy=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const idx=targets.indexOf(e.target);btns.forEach((b,i)=>b.classList.toggle('active',i===idx))}})},{rootMargin:'0px 0px -75% 0px',threshold:0});targets.forEach(t=>spy.observe(t))}document.addEventListener('DOMContentLoaded',buildSpy);function toggleTheme(){const html=document.documentElement;const goingDark=html.getAttribute('data-theme')==='light';html.setAttribute('data-theme',goingDark?'dark':'light');document.getElementById('themeBtn').textContent=goingDark?'☀️ Light':'🌙 Dark'}function toggleLang(){const html=document.documentElement;const goingEn=html.getAttribute('data-lang')==='zh';html.setAttribute('data-lang',goingEn?'en':'zh');html.setAttribute('lang',goingEn?'en':'zh-Hant');document.getElementById('langBtn').textContent=goingEn?'中文':'English';buildSpy()}</script>
+</body>
+</html>

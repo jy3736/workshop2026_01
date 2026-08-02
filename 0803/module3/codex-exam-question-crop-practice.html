@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="dark" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Codex 統測試題切題與答案鍵練習</title>
+<style>:root{color-scheme:dark;--bg:#f4f1ea;--fg:#1f2328;--muted:#687180;--card:#ebe7df;--border:#d6d0c5;--accent:#2563eb;--th-bg:#ded8cc;--shadow:0 1px 3px rgba(44,38,28,.09);--sidebar-w:284px;--content-max:1040px;--content-pad-x:44px;--content-pad-y:42px;--measure:76ch}[data-theme="dark"]{--bg:#101217;--fg:#e7eaf0;--muted:#a5aebd;--card:#181c24;--border:#2a3140;--accent:#7bb2ff;--th-bg:#202632;--shadow:0 1px 3px rgba(0,0,0,.42)}html{scroll-behavior:smooth}*{box-sizing:border-box}body{min-width:0;margin:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Microsoft JhengHei",Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.76;letter-spacing:0;transition:background .25s,color .25s}.wrap{width:min(var(--content-max),calc(100vw - var(--sidebar-w) - (var(--content-pad-x) * 2)));margin-left:calc(var(--sidebar-w) + max(var(--content-pad-x),(100vw - var(--sidebar-w) - var(--content-max)) / 2));padding:var(--content-pad-y) var(--content-pad-x) 88px}.sidebar{position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;overflow-y:auto;background:var(--card);border-right:1px solid var(--border);display:flex;flex-direction:column;gap:10px;padding:18px 14px;z-index:30}.brand{font-weight:700;font-size:1rem;line-height:1.35;padding:0 6px}.toprow{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.navmode{display:flex;align-items:flex-start;gap:8px;margin:0 6px;color:var(--muted);font-size:13px;font-weight:650;line-height:1.35}.navmode input{width:16px;height:16px;margin:1px 0 0;accent-color:var(--accent)}.nav{display:flex;flex-direction:column;gap:4px;margin-top:6px}.navbtn,.navhome{cursor:pointer;border:1px solid transparent;background:transparent;color:var(--muted);border-radius:7px;padding:7px 10px;font-size:14px;font-weight:650;text-align:left;width:100%;white-space:normal;text-decoration:none}.navbtn:hover,.navbtn.active,.navhome:hover{color:var(--accent);border-color:var(--border);background:var(--bg)}.navhome{display:block;border-color:var(--border);background:var(--bg);color:var(--fg)}.btn{cursor:pointer;border:1px solid var(--border);background:var(--bg);color:var(--fg);border-radius:8px;padding:6px 12px;font-size:13px;font-weight:650}.btn:hover{border-color:var(--accent)}.menu-toggle{display:none;position:fixed;top:12px;left:12px;z-index:40;cursor:pointer;border:1px solid var(--border);background:var(--card);color:var(--fg);border-radius:8px;padding:6px 12px;font-size:18px;line-height:1}.backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.42);z-index:20}h1{max-width:var(--measure);font-size:2.15rem;line-height:1.28;margin:.2em 0 .35em}h2{font-size:1.48rem;margin-top:1.85em;padding-bottom:.25em;border-bottom:2px solid var(--border);scroll-margin-top:24px}h3{font-size:1.18rem;margin-top:1.55em;color:var(--accent)}h4{font-size:1.04rem;margin-top:1.25em;margin-bottom:.35em;color:var(--fg)}ul,ol{padding-left:1.3em}li{margin:.35em 0}p,li,blockquote{max-width:var(--measure);overflow-wrap:break-word}.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}table{width:100%;border-collapse:collapse;margin:1em 0;font-size:.94rem;box-shadow:var(--shadow);border-radius:8px;overflow:hidden}th,td{text-align:left;padding:10px 14px;border:1px solid var(--border);vertical-align:top}th{background:var(--th-bg);font-weight:750}td:first-child,th:first-child{white-space:nowrap}tbody tr:nth-child(even) td{background:var(--card)}figure{max-width:100%;margin:1.1em 0 1.35em;padding:10px;background:var(--card);border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow)}figure img{display:block;width:100%;height:auto;border-radius:6px}blockquote{margin:1.1em 0;padding:12px 16px;border-left:4px solid var(--accent);background:var(--card);color:var(--fg)}pre{overflow:auto;white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere;padding:12px 14px;background:var(--card);border:1px solid var(--border);border-radius:8px}code{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size:.92em;color:var(--fg);background:var(--card);border:1px solid var(--border);border-radius:6px;padding:.08em .35em}pre code{border:0;padding:0;background:transparent}.nav code{border:0;background:transparent;color:inherit;padding:0}.code-toolbar{display:flex;justify-content:flex-end;margin-bottom:-6px}.copy-btn{cursor:pointer;border:1px solid var(--border);background:var(--bg);color:var(--fg);border-radius:6px;padding:5px 10px;font-size:12px;font-weight:650;display:flex;align-items:center;gap:5px}.copy-btn:hover{border-color:var(--accent)}.copy-btn.copied{border-color:var(--accent);color:var(--accent)}.site-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:1.2em 0}.site-card{display:flex;flex-direction:column;gap:6px;min-height:142px;padding:14px 16px;border:1px solid var(--border);border-radius:8px;background:var(--card);box-shadow:var(--shadow);text-decoration:none;color:var(--fg)}.site-card:hover{border-color:var(--accent)}.site-card strong{font-size:1.03rem;color:var(--fg)}.site-card span{color:var(--muted)}.download-list{display:grid;gap:8px;max-width:var(--measure);padding-left:0;list-style:none}.download-list a{display:block;padding:10px 12px;border:1px solid var(--border);border-radius:8px;background:var(--card);text-decoration:none}.download-list small{display:block;color:var(--muted)}table,pre{max-width:100%}a{color:var(--accent);overflow-wrap:anywhere}[data-lang="zh"] .en,[data-lang="en"] .zh{display:none}footer{margin-top:3em;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border);padding-top:1em}@media (min-width:1440px){:root{--sidebar-w:304px;--content-max:1080px;--content-pad-x:54px;--content-pad-y:48px}}@media (max-width:1100px){:root{--sidebar-w:230px;--content-max:840px;--content-pad-x:28px;--content-pad-y:32px}.sidebar{padding:16px 10px}.brand{font-size:.95rem}.navbtn,.navhome{font-size:13px;padding:7px 8px}}@media (max-width:860px){:root{--sidebar-w:min(82vw,320px);--content-pad-x:18px;--content-pad-y:0px;--measure:100%}.sidebar{transform:translateX(-100%);transition:transform .25s}.sidebar.open{transform:none}.wrap{width:100%;margin-left:0;padding:72px var(--content-pad-x) 80px}.menu-toggle{display:block}.backdrop.show{display:block}h1{font-size:1.75rem}h2{font-size:1.26rem}h3{font-size:1.08rem}p,li,blockquote{max-width:100%}.site-grid{grid-template-columns:1fr}}@media (max-width:520px){:root{--sidebar-w:min(88vw,300px);--content-pad-x:14px}.wrap{padding-top:68px}.menu-toggle{top:10px;left:10px;padding:7px 11px}.sidebar{padding:14px 10px}.toprow{gap:6px}.btn{padding:6px 10px;font-size:12px}.navmode{font-size:12px}.navbtn,.navhome{font-size:13px}h1{font-size:1.55rem}h2{font-size:1.18rem}th,td{padding:8px 10px}}</style>
+</head>
+<body>
+<button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" type="button">☰</button>
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><span class="zh">Codex 統測試題切題與答案鍵練習</span><span class="en">Codex Exam Question Cropping and Answer Key Practice</span></div>
+  <div class="toprow"><button class="btn" id="langBtn" onclick="toggleLang()" type="button">English</button><button class="btn" id="themeBtn" onclick="toggleTheme()" type="button">☀️ Light</button></div>
+  <label class="navmode"><input id="slideNavMode" onchange="buildSpy()" type="checkbox"><span><span class="zh">導覽反思投影片</span><span class="en">Navigate reflection slides</span></span></label>
+  <a class="navhome return-control" href="../index.html" aria-label="返回上一層 / Back to parent"><span class="zh">返回上一層</span><span class="en">Back to parent</span></a>
+  <nav class="nav"><button class="navbtn" onclick="gotoSection(0)" type="button"><span class="zh">練習目標</span><span class="en">Practice Goal</span></button>
+<button class="navbtn" onclick="gotoSection(1)" type="button"><span class="zh">練習範圍與資料夾結構</span><span class="en">Scope and Folder Layout</span></button>
+<button class="navbtn" onclick="gotoSection(2)" type="button"><span class="zh">參考 Prompt</span><span class="en">Reference Prompt</span></button>
+<button class="navbtn" onclick="gotoSection(3)" type="button"><span class="zh">檢查重點</span><span class="en">Check Points</span></button>
+<button class="navbtn" onclick="gotoSection(4)" type="button"><span class="zh">反思問題</span><span class="en">Reflection Questions</span></button></nav>
+</aside>
+<div class="backdrop" id="backdrop" onclick="toggleMenu()"></div>
+<div class="wrap">
+  <section class="zh"><h1 id="codex-exam-question-crop">Codex 統測試題切題與答案鍵練習</h1>
+<h2 id="_1">練習目標</h2>
+<p>Module 3 全部練習預計 30～40 分鐘完成，本頁是第二部分，接續第一部分下載好的試題與標準答案 PDF。這次要練習用一段自然語言指令，請 Codex 把試題 PDF 逐題裁切成一張一張的圖片，並依你指定的檔名規則命名，再對照標準答案 PDF 建立一份 JSON 格式的答案鍵。跟第一部分「照著網址、連結點下去」不同，這次 Codex 得自己判斷每一題在頁面上從哪裡開始、到哪裡結束。</p>
+<p>完成後你應該能夠：</p>
+<ul>
+<li>用一段自然語言指令，請 Codex 把試題 PDF 轉成圖片，再逐題裁切成一張一張的獨立圖片。</li>
+<li>請 Codex 依你指定的檔名規則（<code>&lt;學年度&gt;Q&lt;題號&gt;.png</code>）為每張圖片命名，並依學年度整理成資料夾。</li>
+<li>請 Codex 對照標準答案 PDF，用同一套命名規則當作 key，建立一份 JSON 格式的答案鍵。</li>
+<li>檢查切題結果是否齊全：圖片張數是否等於題數，JSON 裡的 key 是否跟圖片檔名一一對應。</li>
+<li>比較精確版、詳細版與簡易版 Prompt 的差異——尤其是當任務需要「用眼睛判斷」而不是「照著固定網址走」時，把細節寫死還可不可靠。</li>
+</ul>
+<h2 id="_2">練習範圍與資料夾結構</h2>
+<p>本次練習延續第一部分的下載範圍，但只取其中一科試題，避免題號重複：</p>
+<div class="table-wrap"><table>
+<thead>
+<tr><th>項目</th><th>內容</th></tr>
+</thead>
+<tbody>
+<tr><td>輸入檔案</td><td>第一部分練習下載好的 <code>&lt;學年度&gt;/專業一題目.pdf</code>（試題）與 <code>&lt;學年度&gt;/專業一答案.pdf</code>（標準答案）</td></tr>
+<tr><td>科目群</td><td>電機與電子群資電類・專業科目(一)</td></tr>
+<tr><td>學年度</td><td>111、112、113、114、115（共 5 個學年度）</td></tr>
+<tr><td>輸出圖片檔名規則</td><td><code>&lt;學年度&gt;Q&lt;題號&gt;.png</code>（例如 <code>111Q1.png</code>、<code>111Q23.png</code>）</td></tr>
+<tr><td>輸出答案鍵檔案</td><td><code>answer_key.json</code>，key 與圖片檔名（不含副檔名）完全相同</td></tr>
+</tbody>
+</table></div>
+<p>切題完成後，請 Codex 依照學年度建立資料夾，例如：</p>
+<pre><code class="language-text">images/
+  111/
+    111Q1.png
+    111Q2.png
+    ...
+    111Q40.png
+  112/ ... 115/（同樣依題數各自產生檔案）
+answer_key.json
+</code></pre>
+<pre><code class="language-json">{
+  "111Q1": "C",
+  "111Q2": "D",
+  "111Q3": "C",
+  "112Q1": "B"
+}
+</code></pre>
+<blockquote>
+<p>因為專業科目(二)的題號也是從 1 開始編，如果兩科都用同一套 <code>&lt;學年度&gt;Q&lt;題號&gt;</code> 規則命名，會互相撞名。這次練習先只處理專業科目(一)；要不要、以及怎麼把兩科都納入，留給反思問題討論。輸入的 PDF 都是第一部分練習已經下載好的本機檔案，這次不需要重新連線到官網。</p>
+</blockquote>
+<h2 id="_3">參考 Prompt</h2>
+<h3 id="_3-0">精確版</h3>
+<p>如果想寫得像傳統批次處理腳本一樣精確，可以連要用什麼工具把 PDF 轉成圖片、解析度多少、裁切範圍怎麼判斷都寫清楚。這種寫法在試卷版面穩定、一題接一題乾淨分隔時最省事，但統測試題本身沒有網址或連結文字可以寫死，唯一能寫死的是流程與工具——換一個學年度、版面忽然變雙欄，或某一題橫跨兩頁，寫死的流程還是得靠 Codex 臨場判斷。</p>
+<div class="code-toolbar"><button class="copy-btn" onclick="copyPrompt('ref-prompt-zh-precise',this)" type="button"><span class="copy-icon">📋</span><span class="zh">複製</span><span class="en">Copy</span></button></div>
+<pre><code id="ref-prompt-zh-precise" class="language-text">請依照以下步驟，把 115 學年度「電機與電子群資電類」的試題 PDF（專業科目(一)與專業科目(二)）切成一題一張圖片，並整理出 JSON 格式答案鍵：
+
+1. 讀取 115/專業一題目.pdf 與 115/專業二題目.pdf（已下載好的檔案）。使用 pdftoppm 或同等工具，把每份 PDF 的每一頁轉成一張 300 DPI 的 PNG 圖片，暫存在一個工作資料夾中。
+
+2. 依序檢視轉出的頁面圖片，找出每一題（例如「1.」「2.」這種題號開頭）在頁面上的起始與結束位置。一題的範圍包含題幹、所有選項，以及題目附帶的圖或表，直到下一題題號出現為止。
+
+3. 用你判斷出的範圍，把每一題從頁面圖片中裁切出來，另存成一張獨立的 PNG，檔名為 &lt;學年度&gt;專業&lt;1 或 2&gt;Q&lt;題號&gt;.png（例如 115專業1Q1.png、115專業2Q23.png），放到 ./&lt;學年度&gt;/assets/ 資料夾中。
+
+4. 讀取 115/專業一答案.pdf 與 115/專業二答案.pdf（標準答案），找出每一題對應的正確選項（A/B/C/D）。
+
+5. 把兩個科目所有題目的答案整理成一個 JSON 檔 ./&lt;學年度&gt;/&lt;學年度&gt;keys.json，格式為 { "115專業1Q1": "C", "115專業1Q2": "D", ... }，key 要跟第 3 步產生的圖片檔名（不含副檔名）完全一致。
+
+6. 如果某一題在頁面上找不到明確的題號、題目橫跨兩頁、或某一題被官方公告不予計分／一律給分，請停下來、告訴我實際狀況，不要憑猜測硬裁或亂填答案。
+</code></pre>
+<h3 id="_3-1">詳細版</h3>
+<p>先看一個把規則和驗收標準都講清楚、但不規定用哪個工具的版本：說明輸入檔案在哪裡、裁切與命名規則、答案要以標準答案 PDF 為準，並要求 Codex 遇到例外要主動回報、完成後給一份數量核對。</p>
+<div class="code-toolbar"><button class="copy-btn" onclick="copyPrompt('ref-prompt-zh-detailed',this)" type="button"><span class="copy-icon">📋</span><span class="zh">複製</span><span class="en">Copy</span></button></div>
+<pre><code id="ref-prompt-zh-detailed" class="language-text">請幫我把 115 學年度統測「電機與電子群資電類」的試題（專業科目(一)與專業科目(二)），從已下載好的 PDF 中，切成一題一張圖片，並建立對應的 JSON 答案鍵。
+
+輸入檔案：115/專業一題目.pdf、115/專業一答案.pdf、115/專業二題目.pdf、115/專業二答案.pdf，都已經下載好。
+
+請針對兩個科目：
+1. 把試題 PDF 中的每一題（含題幹、選項、附圖或附表）各自裁切成一張獨立的 PNG 圖片。
+2. 圖片檔名請用 &lt;學年度&gt;專業&lt;1 或 2&gt;Q&lt;題號&gt;.png 的格式，例如 115專業1Q1.png、115專業2Q15.png。
+3. 把所有圖片放進 ./&lt;學年度&gt;/assets/ 資料夾。
+4. 從標準答案 PDF 中找出每一題的正確答案（A/B/C/D），整理成一個 JSON 檔 ./&lt;學年度&gt;/&lt;學年度&gt;keys.json，key 用跟圖片檔名相同的字串（不含 .png），例如 "115專業1Q1": "C"。
+
+處理過程請注意：
+- 每張圖片只能包含一題，不要把兩題的內容裁在同一張圖裡，也不要把同一題切成兩張圖。
+- 答案請以官方標準答案 PDF 為準，不要自己作答猜測。
+- 如果題號不連續、有缺頁，或某一題被官方公告不計分／一律給分，請明確告訴我是哪一科、哪一題，不要略過不提。
+- 全部處理完成後，請列出兩個科目各自切出的圖片張數，並確認 &lt;學年度&gt;keys.json 裡的 key 數量與圖片數量一致。
+</code></pre>
+<h3 id="_3-2">簡易版</h3>
+<p>同一個任務也可以只講你要的結果，把「怎麼切、用什麼工具」留給 Codex 自己判斷：</p>
+<div class="code-toolbar"><button class="copy-btn" onclick="copyPrompt('ref-prompt-zh',this)" type="button"><span class="copy-icon">📋</span><span class="zh">複製</span><span class="en">Copy</span></button></div>
+<pre><code id="ref-prompt-zh" class="language-text">請幫我把下載好的 115 學年度試題 PDF，每一題切成一張圖片，檔名使用 ./&lt;學年度&gt;/assets/&lt;學年度&gt;專業&lt;1 或 2&gt;Q&lt;題號&gt;.png。
+然後對照標準答案 PDF，製作 ./&lt;學年度&gt;/&lt;學年度&gt;keys.json。JSON 的 key 使用與圖片檔名完全相同的字串，value 填入正確答案。
+</code></pre>
+<blockquote>
+<p><strong>三種寫法怎麼選？</strong> 「精確版」把要用的工具、解析度、裁切範圍的判斷邏輯都寫清楚，這種寫法在試卷版面穩定、題目一題接一題乾淨分隔時最省事——但統測試題不像網站，沒有網址或連結文字可以寫死，唯一能寫死的是流程與工具本身；如果某年題目橫跨兩頁、或版面忽然變成雙欄，寫死的流程還是得靠 Codex 臨場判斷，這時候精確版不見得比詳細版更可靠。「詳細版」只講規則和驗收標準（一題一圖、檔名規則、答案要以官方 PDF 為準、遇到例外怎麼辦），不規定要用哪個工具、DPI 多少，Codex 可以自己選最適合的做法，工具版本或介面變化也不會卡住整段 Prompt。「簡易版」連規則都不講，只講你要的結果，怎麼切、用什麼工具完全交給 Codex 決定，最省事但也最難確認做得夠不夠完整。多數時候，介於詳細版和簡易版之間最實用：講清楚一題一圖、檔名規則、答案要對照官方 PDF，但不用規定 Codex 該用哪一套裁圖工具。</p>
+</blockquote>
+<h2 id="_4">檢查重點</h2>
+<ul>
+<li>每個學年度資料夾裡的圖片數量，是否等於該年度試題的實際題數（可以用答案 PDF 或試題目次核對）。</li>
+<li>每張圖片是否恰好對應一題：沒有兩題擠在同一張圖裡，也沒有同一題被切成兩張圖或漏了附圖、附表。</li>
+<li><code>answer_key.json</code> 裡的 key 是否與圖片檔名（去掉 <code>.png</code>）一一對應，沒有多餘或缺少的 key。</li>
+<li>答案是否來自標準答案 PDF，而不是 Codex 自己作答；抽查幾題比對原始 PDF 確認正確性。</li>
+<li>若有題目被官方公告不予計分／一律給分，Codex 有沒有明確標註，而不是自己隨便給一個答案。</li>
+</ul>
+<h2 id="_5">反思問題</h2>
+<ol>
+<li>如果用固定的頁面座標去裁切每一題，換一個學年度、版面編排不同時，這個做法還能用嗎？為什麼第一部分的「網站操作版」可以把連結整個寫死，但這裡沒辦法把裁切座標整個寫死？</li>
+<li>如果要把專業科目(一)和專業科目(二)都做這個練習，兩科的題號都從 1 開始，<code>&lt;學年度&gt;Q&lt;題號&gt;</code> 這個檔名規則會發生什麼問題？你會怎麼修改命名規則來避免衝突？</li>
+<li>你要怎麼在不用肉眼看完所有圖片的情況下，快速確認 Codex 沒有把任何一題的附圖漏掉、或裁到隔壁題的內容？</li>
+<li>為什麼答案鍵要讓 Codex 去讀標準答案 PDF，而不是直接請 Codex 看著題目圖片自己作答？這兩種做法的可靠度有什麼差別？</li>
+</ol></section>
+  <section class="en"><h1 id="codex-exam-question-crop-practice">Codex Exam Question Cropping and Answer Key Practice</h1>
+<h2 id="practice-goal">Practice Goal</h2>
+<p>Module 3 is designed to take about 30–40 minutes in total. This page covers Part 2, continuing from the exam papers and answer keys downloaded in Part 1. This time you'll practice giving Codex one natural-language instruction to crop an exam PDF into one image per question, name each image using a rule you specify, and build a JSON-style answer key against the official standard-answer PDF. Unlike Part 1's "follow this URL, click this link," Codex now has to judge for itself where each question starts and ends on the page.</p>
+<p>After this, you should be able to:</p>
+<ul>
+<li>Use one natural-language instruction to have Codex convert an exam PDF into images and crop out each individual question as its own image.</li>
+<li>Have Codex name each image using a rule you specify (<code>&lt;year&gt;Q&lt;question number&gt;.png</code>) and organize them into folders by year.</li>
+<li>Have Codex cross-reference the standard-answer PDF and build a JSON-style answer key using the same naming convention as the key.</li>
+<li>Check that the cropping is complete: the image count matches the question count, and every JSON key matches an image filename.</li>
+<li>Compare the precise, detailed, and simple prompt versions — especially when the task requires visual judgment rather than following a fixed URL.</li>
+</ul>
+<h2 id="scope-and-folder-layout">Scope and Folder Layout</h2>
+<p>This practice continues the scope from Part 1, but uses only one subject exam to keep question numbers unique:</p>
+<div class="table-wrap"><table>
+<thead>
+<tr><th>Item</th><th>Value</th></tr>
+</thead>
+<tbody>
+<tr><td>Input files</td><td><code>&lt;year&gt;/專業一題目.pdf</code> (exam) and <code>&lt;year&gt;/專業一答案.pdf</code> (standard answer key), already downloaded in Part 1</td></tr>
+<tr><td>Subject group</td><td>Electrical and Electronics Group — Information/Electronics Track, Professional Subject (1)</td></tr>
+<tr><td>Academic years</td><td>111, 112, 113, 114, 115 (5 years)</td></tr>
+<tr><td>Output image naming rule</td><td><code>&lt;year&gt;Q&lt;question number&gt;.png</code> (e.g. <code>111Q1.png</code>, <code>111Q23.png</code>)</td></tr>
+<tr><td>Output answer key file</td><td><code>answer_key.json</code>, keys identical to the image filenames minus the extension</td></tr>
+</tbody>
+</table></div>
+<p>Once cropped, have Codex create one folder per academic year, for example:</p>
+<pre><code class="language-text">images/
+  111/
+    111Q1.png
+    111Q2.png
+    ...
+    111Q40.png
+  112/ ... 115/ (same pattern, one file per question)
+answer_key.json
+</code></pre>
+<pre><code class="language-json">{
+  "111Q1": "C",
+  "111Q2": "D",
+  "111Q3": "C",
+  "112Q1": "B"
+}
+</code></pre>
+<blockquote>
+<p>Professional Subject (2) also numbers its questions starting from 1, so applying the same <code>&lt;year&gt;Q&lt;question number&gt;</code> rule to both subjects would collide. This practice covers only Professional Subject (1); whether and how to extend it to both subjects is left for the reflection questions. All input PDFs are already on disk from Part 1 — no need to go back online.</p>
+</blockquote>
+<h2 id="reference-prompt">Reference Prompt</h2>
+<h3 id="reference-prompt-precise">Precise Version</h3>
+<p>You can also write it as precisely as an old-school batch-processing script: name the exact tool for converting PDF pages to images, the resolution, and the logic for judging each crop boundary. This is the most reliable version when a paper's layout stays consistent and questions are cleanly separated — but an exam paper has no URL or link text to hard-code the way a website does. The only thing you can pin down is the process and tooling; if a question spans a page break, or a year's layout suddenly shifts to two columns, Codex still has to make a judgment call on the spot.</p>
+<div class="code-toolbar"><button class="copy-btn" onclick="copyPrompt('ref-prompt-en-precise',this)" type="button"><span class="copy-icon">📋</span><span class="zh">複製</span><span class="en">Copy</span></button></div>
+<pre><code id="ref-prompt-en-precise" class="language-text">Follow these steps to crop the Professional Subject (1) exam PDFs for the "電機與電子群資電類" (Electrical and
+Electronics Group — Information/Electronics Track) for the 111 to 115 academic years into one image per
+question, and build a JSON-style answer key:
+
+1. For each academic year, read &lt;year&gt;/專業一題目.pdf (already downloaded in Part 1). Use pdftoppm or an
+   equivalent tool to render every PDF page as a 300 DPI PNG image into a working folder.
+
+2. Go through the rendered page images in order and find where each question (starting with "1.", "2.", and
+   so on) begins and ends on the page. A question's range covers its stem, all answer choices, and any figure
+   or table that belongs to it, up to where the next question number appears.
+
+3. Using the range you identified, crop each question out of the page image and save it as its own PNG, named
+   &lt;year&gt;Q&lt;question number&gt;.png (e.g. 111Q1.png, 111Q23.png), inside the images/&lt;year&gt;/ folder.
+
+4. Read &lt;year&gt;/專業一答案.pdf (the standard answer key) and find the correct choice (A/B/C/D) for each
+   question.
+
+5. Collect every year's and every question's answer into a single JSON file, answer_key.json, in the form
+   { "111Q1": "C", "111Q2": "D", ... }, with keys that exactly match the image filenames from step 3 (minus
+   the extension).
+
+6. If a question's number can't be clearly located on the page, a question spans two pages, or a question was
+   officially voided/credited to everyone, stop and tell me what you actually see — don't guess where to crop
+   or make up an answer.
+</code></pre>
+<h3 id="reference-prompt-detailed">Detailed Version</h3>
+<p>Here's a version that states the rules and acceptance criteria clearly without dictating which tool to use: where the input files are, the cropping and naming rules, that answers must come from the official PDF, and a request for Codex to flag exceptions and give a final count.</p>
+<div class="code-toolbar"><button class="copy-btn" onclick="copyPrompt('ref-prompt-en-detailed',this)" type="button"><span class="copy-icon">📋</span><span class="zh">複製</span><span class="en">Copy</span></button></div>
+<pre><code id="ref-prompt-en-detailed" class="language-text">Please crop the Professional Subject (1) exam questions for "電機與電子群資電類" (Electrical and Electronics
+Group — Information/Electronics Track) for the 111 to 115 academic years, from the PDFs already downloaded in
+Part 1, into one image per question, and build a matching JSON answer key.
+
+Input files: each year's &lt;year&gt;/專業一題目.pdf (exam) and &lt;year&gt;/專業一答案.pdf (standard answer key), already
+downloaded in Part 1.
+
+For each academic year:
+1. Crop every question (stem, answer choices, and any figure or table) out of the exam PDF as its own PNG
+   image.
+2. Name each image &lt;year&gt;Q&lt;question number&gt;.png, e.g. 111Q1.png, 112Q15.png.
+3. Put all of a year's images into images/&lt;year&gt;/.
+4. Look up each question's correct answer (A/B/C/D) in the standard answer key PDF, and collect them into a
+   JSON file, answer_key.json, using the same string as the image filename (without .png) as the key, e.g.
+   "111Q1": "C".
+
+While doing this:
+- Each image must contain exactly one question — don't crop two questions into one image, and don't split one
+  question across two images.
+- Answers must come from the official standard answer key PDF — don't answer the questions yourself.
+- If a year has non-consecutive question numbers, a missing page, or a question that was officially voided or
+  credited to everyone, tell me explicitly which year and which question — don't skip it silently.
+- When everything is done, list how many images were produced per year, and confirm the number of keys in
+  answer_key.json matches the number of images.
+</code></pre>
+<h3 id="reference-prompt-simple">Simple Version</h3>
+<p>The same task can also be stated as just the result you want, leaving "how to crop, what tool to use" up to Codex:</p>
+<div class="code-toolbar"><button class="copy-btn" onclick="copyPrompt('ref-prompt-en',this)" type="button"><span class="copy-icon">📋</span><span class="zh">複製</span><span class="en">Copy</span></button></div>
+<pre><code id="ref-prompt-en" class="language-text">Take the 111 to 115 academic year Professional Subject (1) exam PDFs for "電機與電子群資電類" (Electrical and
+Electronics Group — Information/Electronics Track) that I already downloaded in Part 1, crop out one image per
+question, and name each one &lt;year&gt;Q&lt;question number&gt;.png, organized into one folder per year.
+Then cross-reference the standard answer key PDF and build me a JSON answer key, using the same string as the
+image filename as the key and the correct answer as the value.
+</code></pre>
+<blockquote>
+<p><strong>Which of the three should you use?</strong> The precise version spells out the tool, resolution, and crop-boundary logic — most reliable when a paper's layout stays consistent and questions are cleanly separated. But an exam paper isn't a website: there's no URL or link text to pin down, only the process and tooling itself — and if a question spans a page break, or a year's layout suddenly shifts to two columns, Codex still has to judge it on the spot, so the precise version isn't necessarily more reliable than the detailed one. The detailed version only states the rules and acceptance criteria (one image per question, the naming rule, answers must come from the official PDF, what to do about exceptions) without dictating a specific tool or DPI, so Codex can pick whatever approach fits, and a tool-version change won't get the whole prompt stuck. The simple version doesn't even state the rules — just the result you want — leaving "how to crop, what tool" entirely to Codex; it's the least effort to write but the hardest to verify as thorough. Most of the time, the sweet spot sits between the detailed and simple versions: state clearly that it's one image per question, the naming rule, and that answers must match the official PDF, without dictating which cropping tool Codex should use.</p>
+</blockquote>
+<h2 id="check-points">Check Points</h2>
+<ul>
+<li>Each year's folder has an image count equal to that year's actual number of questions (cross-check against the answer key PDF or the exam's table of contents).</li>
+<li>Every image corresponds to exactly one question: no two questions crammed into one image, no question split across two images or missing its figure/table.</li>
+<li>Every key in <code>answer_key.json</code> matches an image filename (minus <code>.png</code>) one-to-one, with no extra or missing keys.</li>
+<li>Answers come from the standard answer key PDF, not from Codex answering the questions itself — spot-check a few against the original PDF.</li>
+<li>Any question that was officially voided or credited to everyone is clearly flagged by Codex, not silently given a made-up answer.</li>
+</ul>
+<h2 id="reflection-questions">Reflection Questions</h2>
+<ol>
+<li>If you crop every question using fixed page coordinates, would that still work for a different academic year with a different layout? Why could Part 1's site navigation version hard-code the entire link path, while this task can't hard-code the entire set of crop coordinates?</li>
+<li>If you wanted to run this practice on both Professional Subject (1) and (2), and both subjects number their questions starting from 1, what would go wrong with the <code>&lt;year&gt;Q&lt;question number&gt;</code> naming rule? How would you change the naming rule to avoid the collision?</li>
+<li>Without looking through every image by eye, how would you quickly confirm that Codex didn't drop a question's figure or crop into the neighboring question?</li>
+<li>Why should the answer key come from Codex reading the standard answer key PDF, rather than asking Codex to look at each question image and answer it directly? What's the reliability difference between the two approaches?</li>
+</ol></section>
+  <footer>智慧雨林產業創生人才育成計畫 (南臺科技大學 電子系 楊榮林 教授)</footer>
+</div>
+<script>function currentSection(){const lang=document.documentElement.getAttribute('data-lang');return document.querySelector('section.'+lang)}function navUsesSlides(){const box=document.getElementById('slideNavMode');return !!(box&&box.checked)}function targetForHead(head){if(!navUsesSlides())return head;const prev=head.previousElementSibling;if(prev&&(prev.classList.contains('full-screen-image')||prev.querySelector('img')))return prev;return head}function navTargets(){const section=currentSection();if(!section)return[];return[...section.querySelectorAll('h2')].map(targetForHead)}function gotoSection(i){const targets=navTargets();if(targets[i])targets[i].scrollIntoView({behavior:'smooth',block:'start'});closeMenu()}function toggleMenu(){document.getElementById('sidebar').classList.toggle('open');document.getElementById('backdrop').classList.toggle('show')}function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('backdrop').classList.remove('show')}let spy;function buildSpy(){if(spy)spy.disconnect();const targets=navTargets();const btns=[...document.querySelectorAll('.nav .navbtn')];spy=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const idx=targets.indexOf(e.target);btns.forEach((b,i)=>b.classList.toggle('active',i===idx))}})},{rootMargin:'0px 0px -75% 0px',threshold:0});targets.forEach(t=>spy.observe(t))}document.addEventListener('DOMContentLoaded',buildSpy);function toggleTheme(){const html=document.documentElement;const goingDark=html.getAttribute('data-theme')==='light';html.setAttribute('data-theme',goingDark?'dark':'light');document.getElementById('themeBtn').textContent=goingDark?'☀️ Light':'🌙 Dark'}function toggleLang(){const html=document.documentElement;const goingEn=html.getAttribute('data-lang')==='zh';html.setAttribute('data-lang',goingEn?'en':'zh');html.setAttribute('lang',goingEn?'en':'zh-Hant');document.getElementById('langBtn').textContent=goingEn?'中文':'English';buildSpy()}function fallbackCopy(text){const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy')}catch(e){}document.body.removeChild(ta)}function copyPrompt(id,btn){const el=document.getElementById(id);if(!el)return;const text=el.textContent;const done=()=>{const icon=btn.querySelector('.copy-icon');const prev=icon.textContent;icon.textContent='✓';btn.classList.add('copied');clearTimeout(btn._copyTimer);btn._copyTimer=setTimeout(()=>{icon.textContent=prev;btn.classList.remove('copied')},1500)};if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done).catch(()=>{fallbackCopy(text);done()})}else{fallbackCopy(text);done()}}</script>
+</body>
+</html>

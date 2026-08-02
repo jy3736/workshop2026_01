@@ -165,12 +165,62 @@ def extract_word_question_images(
     return sources
 
 
+EPILOG = """\
+sample commands:
+  # extract all figures using default settings (50 questions, "soffice" on PATH)
+  %(prog)s exam.docx out/figures
+
+  # point at a specific LibreOffice binary (e.g. on macOS)
+  %(prog)s exam.docx out/figures \\
+      --soffice /Applications/LibreOffice.app/Contents/MacOS/soffice
+
+  # exam with a non-default question count (e.g. 40 questions)
+  %(prog)s exam.docx out/figures --expected-count 40
+
+notes:
+  * question_paper must be a .docx file where each question row starts with
+    "<number>." (e.g. "1. What is ...") and question numbers run
+    consecutively from 1 to --expected-count somewhere in the document.
+  * image_directory is created if missing; one qN.png is written per
+    question that has at least one embedded image, drawing, or OLE figure.
+  * --soffice is only invoked when a question embeds a vector image
+    (.emf/.wmf), which LibreOffice converts to PNG before cropping.
+"""
+
+
 def main() -> None:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("question_paper", type=Path)
-    parser.add_argument("image_directory", type=Path)
-    parser.add_argument("--soffice", default="soffice")
-    parser.add_argument("--expected-count", type=int, default=50)
+    parser = argparse.ArgumentParser(
+        description=__doc__,
+        epilog=EPILOG,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
+    parser.add_argument(
+        "question_paper",
+        type=Path,
+        help="Path to the TCTE question paper .docx file to extract figures from.",
+    )
+    parser.add_argument(
+        "image_directory",
+        type=Path,
+        help="Directory to write one qN.png per question (created if missing).",
+    )
+    parser.add_argument(
+        "--soffice",
+        default="soffice",
+        help=(
+            "Path to (or name of) the LibreOffice binary, used to rasterize "
+            "embedded .emf/.wmf vector figures to PNG. Default: %(default)s"
+        ),
+    )
+    parser.add_argument(
+        "--expected-count",
+        type=int,
+        default=50,
+        help=(
+            "Number of consecutively numbered questions (1..N) to locate in "
+            "the document before extracting figures. Default: %(default)s"
+        ),
+    )
     args = parser.parse_args()
     sources = extract_word_question_images(
         args.question_paper, args.image_directory, args.soffice, args.expected_count

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="dark" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Windows 11：ChatGPT Work 與 Codex 設定指南</title>
+<style>
+:root{color-scheme:dark;--bg:#f4f1ea;--fg:#1f2328;--muted:#687180;--card:#ebe7df;--border:#d6d0c5;--accent:#2563eb;--violet:#7c3aed;--amber:#d97706;--th-bg:#ded8cc;--sidebar-w:284px;--content-max:1040px;--pad-x:44px;--pad-y:42px;--measure:76ch}
+[data-theme="dark"]{--bg:#101217;--fg:#e7eaf0;--muted:#a5aebd;--card:#181c24;--border:#2a3140;--accent:#7bb2ff;--violet:#b59aff;--amber:#f4b65d;--th-bg:#202632}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{min-width:0;margin:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Microsoft JhengHei",Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.76;transition:background .25s,color .25s}
+.sidebar{position:fixed;inset:0 auto 0 0;width:var(--sidebar-w);overflow-y:auto;z-index:30;display:flex;flex-direction:column;gap:10px;padding:18px 14px;background:var(--card);border-right:1px solid var(--border)}
+.brand{padding:0 6px;font-size:1rem;font-weight:750;line-height:1.35}.toprow{display:flex;flex-wrap:wrap;gap:8px}.btn{cursor:pointer;border:1px solid var(--border);border-radius:8px;padding:6px 12px;background:var(--bg);color:var(--fg);font-weight:650}.btn:hover{border-color:var(--accent)}
+.nav{display:flex;flex-direction:column;gap:4px;margin-top:4px}.navbtn,.navhome{width:100%;cursor:pointer;border:1px solid transparent;border-radius:7px;padding:7px 10px;background:transparent;color:var(--muted);font-size:14px;font-weight:650;text-align:left;text-decoration:none}.navbtn:hover,.navbtn.active,.navhome:hover{border-color:var(--border);background:var(--bg);color:var(--accent)}.navhome{display:block;border-color:var(--border);background:var(--bg);color:var(--fg)}
+.menu-toggle{display:none;position:fixed;top:12px;left:12px;z-index:40;cursor:pointer;border:1px solid var(--border);border-radius:8px;padding:6px 12px;background:var(--card);color:var(--fg);font-size:18px;line-height:1}.backdrop{display:none;position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.42)}
+.wrap{width:min(var(--content-max),calc(100vw - var(--sidebar-w) - (var(--pad-x) * 2)));margin-left:calc(var(--sidebar-w) + max(var(--pad-x),(100vw - var(--sidebar-w) - var(--content-max)) / 2));padding:var(--pad-y) var(--pad-x) 88px}
+h1{max-width:var(--measure);margin:.2em 0 .35em;font-size:2.15rem;line-height:1.28}h2{margin-top:1.9em;padding-bottom:.25em;border-bottom:2px solid var(--border);font-size:1.48rem;scroll-margin-top:24px}h3{margin-top:1.4em;color:var(--accent);font-size:1.15rem}p,li{max-width:var(--measure);overflow-wrap:break-word}li{margin:.35em 0}ul,ol{padding-left:1.3em}a{color:var(--accent);overflow-wrap:anywhere}
+.lead{font-size:1.08rem;color:var(--fg)}.callout{max-width:var(--measure);margin:1.15em 0;padding:13px 16px;border-left:4px solid var(--accent);border-radius:0 10px 10px 0;background:var(--card)}.note{color:var(--muted);font-size:.92rem}
+figure{max-width:100%;margin:1.25em 0 .45em;padding:10px;border:1px solid var(--border);border-radius:12px;background:#06132c;box-shadow:0 12px 30px rgba(0,0,0,.2)}figure img{display:block;width:100%;height:auto;border-radius:7px}.table-wrap{width:100%;overflow-x:auto}table{width:100%;border-collapse:collapse;margin:1em 0;font-size:.94rem}th,td{padding:10px 14px;border:1px solid var(--border);vertical-align:top;text-align:left}th{background:var(--th-bg);font-weight:750}tbody tr:nth-child(even) td{background:var(--card)}
+[data-lang="zh"] .en,[data-lang="en"] .zh{display:none}footer{margin-top:3em;padding-top:1em;border-top:1px solid var(--border);color:var(--muted);font-size:.85rem}
+@media (min-width:1440px){:root{--sidebar-w:304px;--content-max:1080px;--pad-x:54px;--pad-y:48px}}@media (max-width:860px){:root{--sidebar-w:min(82vw,320px);--pad-x:18px;--pad-y:0px;--measure:100%}.sidebar{transform:translateX(-100%);transition:transform .25s}.sidebar.open{transform:none}.wrap{width:100%;margin-left:0;padding:72px var(--pad-x) 80px}.menu-toggle{display:block}.backdrop.show{display:block}h1{font-size:1.75rem}h2{font-size:1.26rem}}@media (max-width:520px){:root{--pad-x:14px}.wrap{padding-top:68px}.menu-toggle{top:10px;left:10px;padding:7px 11px}.sidebar{padding:14px 10px}.btn{padding:6px 10px;font-size:12px}.navbtn,.navhome{font-size:13px}h1{font-size:1.55rem}h2{font-size:1.18rem}.table-wrap table{min-width:760px}th,td{padding:8px 10px}}
+</style>
+</head>
+<body>
+<button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" type="button" aria-label="開啟選單 / Open menu">☰</button>
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><span class="zh">Windows 11：ChatGPT Work 與 Codex 設定指南</span><span class="en">Windows 11: ChatGPT Work and Codex Setup Guide</span></div>
+  <div class="toprow"><button class="btn" id="langBtn" onclick="toggleLang()" type="button">English</button><button class="btn" id="themeBtn" onclick="toggleTheme()" type="button">☀️ Light</button></div>
+  <a class="navhome" href="index.html" aria-label="返回上一層 / Back to parent"><span class="zh">返回上一層</span><span class="en">Back to parent</span></a>
+  <nav class="nav">
+    <button class="navbtn" onclick="gotoSection(0)" type="button"><span class="zh">更新說明</span><span class="en">What changed</span></button>
+    <button class="navbtn" onclick="gotoSection(1)" type="button"><span class="zh">Windows 11 安裝</span><span class="en">Install on Windows 11</span></button>
+    <button class="navbtn" onclick="gotoSection(2)" type="button"><span class="zh">Chat、Work 與 Codex 比較</span><span class="en">Compare Chat, Work, and Codex</span></button>
+    <button class="navbtn" onclick="gotoSection(3)" type="button"><span class="zh">選擇執行位置</span><span class="en">Choose where work runs</span></button>
+    <button class="navbtn" onclick="gotoSection(4)" type="button"><span class="zh">安全設定 Codex</span><span class="en">Configure Codex safely</span></button>
+    <button class="navbtn" onclick="gotoSection(5)" type="button"><span class="zh">保持參與與審查</span><span class="en">Stay in the loop</span></button>
+    <button class="navbtn" onclick="gotoSection(6)" type="button"><span class="zh">課前檢查</span><span class="en">Before you begin</span></button>
+    <button class="navbtn" onclick="gotoSection(7)" type="button"><span class="zh">參考來源</span><span class="en">References</span></button>
+  </nav>
+</aside>
+<div class="backdrop" id="backdrop" onclick="toggleMenu()"></div>
+<main class="wrap">
+  <section class="zh">
+    <h1>Windows 11：ChatGPT Work 與 Codex 設定指南</h1>
+    <p class="lead">本指南只針對 Windows 11。先完成 ChatGPT 桌面版安裝，再依任務選擇 Chat、ChatGPT Work 或 Codex；若要處理課程 project，最後才以保守方式設定 Codex 的工作範圍與核准模式。</p>
+
+    <h2>更新說明</h2>
+    <div class="callout"><strong>新版重點：</strong>原本獨立的 Codex app 已整合到 ChatGPT 桌面版。Chat、ChatGPT Work 與 Codex 是同一個桌面 app 中不同的工作介面；Work 不是另外安裝的 app。介面名稱或按鈕位置可能更新，但「選對工作介面、限制範圍、人工審查」的原則不變。2026 年 7 月起，本機 project 可加入多個資料夾（multi-folder project）：Codex 能讀取並修改每一個已加入的資料夾，只有主要資料夾（primary folder）用於 Git 操作，以及 AGENTS.md、skills、config.toml 的自動偵測。</div>
+
+    <h2>Windows 11：安裝與開啟 ChatGPT Work</h2>
+    <ol>
+      <li>從 <a href="https://chatgpt.com/download">ChatGPT 官方下載頁</a>安裝或更新 Windows 版 ChatGPT 桌面 app。</li>
+      <li>開啟 app，使用你的 ChatGPT 帳號登入；可用功能會因方案、組織設定與推出狀態而不同。</li>
+      <li>要做研究、分析、文件、簡報或其他多步驟成果時，先選 <strong>ChatGPT</strong>，再在新對話上方切換到 <strong>Work</strong>。</li>
+      <li>要處理專案資料夾、程式碼、指令或 diff 審查時，從 ChatGPT 下拉選單選 <strong>Codex</strong>。</li>
+    </ol>
+
+    <h2>Chat、Work 與 Codex 比較</h2>
+    <figure><img src="assets/codex-app-settings-guide/work-surface-choice.png" alt="Chat、ChatGPT Work 與 Codex 的三種工作介面教學流程圖"></figure>
+    <p class="note">這是教學流程圖，不是產品畫面截圖。</p>
+    <div class="table-wrap"><table><thead><tr><th>介面</th><th>最適合的任務</th><th>本機 project</th><th>工具與審查</th><th>預期成果</th></tr></thead><tbody>
+    <tr><td>Chat</td><td>快速問答、解釋、構想或短文草稿。</td><td>通常不需要。</td><td>以對話與快速確認為主。</td><td>立即可閱讀的回答或草稿。</td></tr>
+    <tr><td>ChatGPT Work</td><td>需要多個步驟的研究、分析、文件、簡報或可審查成果。</td><td>需要這台電腦的檔案或 app 時選 Work locally。</td><td>可使用檔案、plugin 與已核准工具；你可看進度與調整方向。</td><td>可重用、可審查的交付成果。</td></tr>
+    <tr><td>Codex</td><td>專案資料夾、程式碼、指令、驗證與可重複開發流程。</td><td>先選對唯一的課程 project。</td><td>使用權限與核准模式；重要改動先看 diff。</td><td>經驗證的檔案、程式碼與專案變更。</td></tr>
+    </tbody></table></div>
+    <p class="note">手機上可左右滑動比較表，保留每一欄的完整內容。</p>
+
+    <h2>選擇執行位置</h2>
+    <figure><img src="assets/codex-app-settings-guide/work-local-cloud.png" alt="Work locally 與 Cloud 的執行位置選擇教學流程圖"></figure>
+    <p class="note">這是教學流程圖，不是產品畫面截圖。</p>
+    <p><strong>Work locally</strong> 適合必須使用這台電腦上的檔案或 app 的任務，例如課程資料夾、瀏覽器或本機工具。<strong>Cloud</strong> 適合希望工作在電腦關閉後仍能繼續，或想在網頁與手機接續查看的任務。選擇前先問：這個任務是否真的需要這台電腦上的檔案或 app？</p>
+
+    <h2>安全設定 Codex</h2>
+    <figure><img src="assets/codex-app-settings-guide/work-boundaries.png" alt="任務與來源、檔案、app、瀏覽器及核准邊界的教學流程圖"></figure>
+    <p class="note">這是教學流程圖，不是產品畫面截圖。</p>
+    <ol>
+      <li>在 Codex 開始前，確認只選到這次課程要使用的 workspace 或 project 資料夾。</li>
+      <li>如果這個 project 已加入多個資料夾（multi-folder project），要逐一確認每個已加入的資料夾都在課程範圍內；Codex 可以讀取與修改每一個已加入的資料夾，不是只有主要資料夾（primary folder）。</li>
+      <li>先選<strong>先要求核准</strong>（Ask for approval）。它可在目前工作區內工作，想跨出範圍時會暫停讓你判斷。</li>
+      <li>不要預設開啟<strong>完整存取權</strong>（Full access）。它只在你了解風險且信任該 project 時才有必要。</li>
+      <li>把網路、瀏覽器、plugin、MCP 與外部工具視為需要理由的能力；看懂用途再核准。</li>
+      <li>學生姓名、學號、成績、帳號、金鑰與行政資料先限制範圍，或先做去識別化。</li>
+      <li>看到核准要求時先讀內容；完成後檢查 diff、輸出檔案與實際結果。</li>
+    </ol>
+
+    <h2>保持參與與審查</h2>
+    <figure><img src="assets/codex-app-settings-guide/work-review-loop.png" alt="開始、觀察進度、回答或調整方向、核准重要動作及審查成果的五步驟循環圖"></figure>
+    <p class="note">這是教學流程圖，不是產品畫面截圖。</p>
+    <p>不論使用 Work 或 Codex，都不要把任務交出去後就不再理會。你可以看進度、回答補充問題、改變方向，並在重要動作前做判斷。完成後仍要檢查結果是否符合目標、引用或資料是否正確、檔案是否放在預期位置，以及是否還需要人工修改。</p>
+
+    <h2>課前檢查</h2>
+    <ol>
+      <li>Windows 11 的 ChatGPT 桌面 app 已安裝或更新，且我已登入正確帳號。</li>
+      <li>我已選對 Chat、Work 或 Codex；需要本機檔案或 app 時，Work 選 <strong>Work locally</strong>。</li>
+      <li>使用 Codex 時，我已選對唯一的課程 workspace，並確認每一個已加入的資料夾（包含次要資料夾）都在允許範圍內。</li>
+      <li>我已使用先要求核准，沒有預設開啟完整存取權。</li>
+      <li>我會檢查核准要求、diff 與最後輸出結果。</li>
+    </ol>
+
+    <h2>參考來源</h2>
+    <ul>
+      <li><a href="https://learn.chatgpt.com/docs/get-started-with-work">OpenAI：開始使用 ChatGPT Work</a></li>
+      <li><a href="https://learn.chatgpt.com/docs/app">OpenAI：ChatGPT 桌面版應用程式</a></li>
+      <li><a href="https://learn.chatgpt.com/docs/reference/settings">OpenAI：ChatGPT 桌面版設定</a></li>
+      <li><a href="https://learn.chatgpt.com/docs/permission-modes">OpenAI：權限設定</a></li>
+      <li><a href="https://learn.chatgpt.com/docs/projects">OpenAI：Projects 與對話</a></li>
+    </ul>
+  </section>
+
+  <section class="en">
+    <h1>Windows 11: ChatGPT Work and Codex Setup Guide</h1>
+    <p class="lead">This guide is for Windows 11 only. Install the ChatGPT desktop app first, then choose Chat, ChatGPT Work, or Codex for the task. Use the conservative Codex configuration only when you need to work in a course project.</p>
+
+    <h2>What changed</h2>
+    <div class="callout"><strong>New update:</strong> the former Codex app is integrated into the ChatGPT desktop app. Chat, ChatGPT Work, and Codex are separate work views in the same desktop app. Work is not a separately installed app. Labels and button locations can change, but choosing the right view, limiting scope, and reviewing work remain the same. Since July 2026, a local project can include multiple attached folders (a multi-folder project): ChatGPT can read and change files in every attached folder, and only the primary folder is used for Git operations and automatic AGENTS.md, skills, and config.toml discovery.</div>
+
+    <h2>Install on Windows 11</h2>
+    <ol>
+      <li>Install or update the Windows ChatGPT desktop app from the <a href="https://chatgpt.com/download">official ChatGPT download page</a>.</li>
+      <li>Open the app and sign in with your ChatGPT account. Available features can differ by plan, organization settings, and rollout.</li>
+      <li>For research, analysis, documents, decks, or other multi-step deliverables, select <strong>ChatGPT</strong>, then switch the new chat to <strong>Work</strong>.</li>
+      <li>For a project folder, code, commands, or diff review, select <strong>Codex</strong> from the ChatGPT dropdown.</li>
+    </ol>
+
+    <h2>Compare Chat, Work, and Codex</h2>
+    <figure><img src="assets/codex-app-settings-guide/work-surface-choice.png" alt="Teaching workflow diagram for Chat, ChatGPT Work, and Codex"></figure>
+    <p class="note">This is a teaching workflow diagram, not an exact product screenshot.</p>
+    <div class="table-wrap"><table><thead><tr><th>Surface</th><th>Ideal task</th><th>Local project</th><th>Tools and review</th><th>Expected outcome</th></tr></thead><tbody>
+    <tr><td>Chat</td><td>Quick answers, explanations, ideas, or a short draft.</td><td>Usually not needed.</td><td>Conversation and quick confirmation.</td><td>An immediate answer or draft.</td></tr>
+    <tr><td>ChatGPT Work</td><td>Multi-step research, analysis, documents, decks, or a reviewable deliverable.</td><td>Select Work locally when the task needs files or apps on this computer.</td><td>Can use files, plugins, and approved tools; you can follow progress and steer.</td><td>A reusable, reviewable deliverable.</td></tr>
+    <tr><td>Codex</td><td>A project folder, code, commands, verification, and repeatable development.</td><td>First select the one intended course project.</td><td>Use permissions and approvals; review important diffs first.</td><td>Verified files, code, and project changes.</td></tr>
+    </tbody></table></div>
+    <p class="note">On a phone, swipe the comparison table sideways to keep every column readable.</p>
+
+    <h2>Choose where work runs</h2>
+    <figure><img src="assets/codex-app-settings-guide/work-local-cloud.png" alt="Teaching workflow diagram for choosing Work locally or Cloud"></figure>
+    <p class="note">This is a teaching workflow diagram, not an exact product screenshot.</p>
+    <p><strong>Work locally</strong> is for tasks that need files or apps on this computer, such as a course folder, browser, or local tool. <strong>Cloud</strong> is for work that should continue after the computer is unavailable or be continued from the web or a phone. Ask first: does this task truly need files or apps on this computer?</p>
+
+    <h2>Configure Codex safely</h2>
+    <figure><img src="assets/codex-app-settings-guide/work-boundaries.png" alt="Teaching workflow diagram for task boundaries: sources, files, apps, browser, and approvals"></figure>
+    <p class="note">This is a teaching workflow diagram, not an exact product screenshot.</p>
+    <ol>
+      <li>Before starting Codex, confirm that only the intended course workspace or project folder is selected.</li>
+      <li>If the project has multiple attached folders (a multi-folder project), check every attached folder, not only the primary one; Codex can read and change files in every attached folder.</li>
+      <li>Start with <strong>Ask for approval</strong>. It can work inside the current workspace and pauses when it needs to cross that boundary.</li>
+      <li>Do not enable <strong>Full access</strong> by default. Use it only when you understand the risk and trust the project.</li>
+      <li>Treat network access, browser use, plugins, MCP, and external tools as capabilities that need a reason; understand the purpose before approving them.</li>
+      <li>Keep student names, IDs, grades, accounts, keys, and administrative data in a narrow boundary or de-identify them first.</li>
+      <li>Read every approval request; then review diffs, output files, and the real result.</li>
+    </ol>
+
+    <h2>Stay in the loop</h2>
+    <figure><img src="assets/codex-app-settings-guide/work-review-loop.png" alt="Five-step loop: start, watch progress, answer or steer, approve important actions, and review result"></figure>
+    <p class="note">This is a teaching workflow diagram, not an exact product screenshot.</p>
+    <p>Neither Work nor Codex means handing off a task and walking away. Follow progress, answer questions, change direction, and make decisions before important actions. When the work is complete, still check whether it meets the goal, uses the right sources, stores files in the expected place, and needs a human revision.</p>
+
+    <h2>Before you begin</h2>
+    <ol>
+      <li>The Windows 11 ChatGPT desktop app is installed or updated, and I am signed in to the right account.</li>
+      <li>I selected Chat, Work, or Codex for the task; choose <strong>Work locally</strong> when it needs local files or apps.</li>
+      <li>For Codex, I selected only the intended course workspace, and confirmed every attached folder (including secondary folders) is within the intended scope.</li>
+      <li>I am using Ask for approval and have not enabled Full access by default.</li>
+      <li>I will inspect approval requests, diffs, and the final output.</li>
+    </ol>
+
+    <h2>References</h2>
+    <ul>
+      <li><a href="https://learn.chatgpt.com/docs/get-started-with-work">OpenAI: Get started with ChatGPT Work</a></li>
+      <li><a href="https://learn.chatgpt.com/docs/app">OpenAI: ChatGPT desktop app</a></li>
+      <li><a href="https://learn.chatgpt.com/docs/reference/settings">OpenAI: ChatGPT desktop app settings</a></li>
+      <li><a href="https://learn.chatgpt.com/docs/permission-modes">OpenAI: Permissions</a></li>
+      <li><a href="https://learn.chatgpt.com/docs/projects">OpenAI: Projects and chats</a></li>
+    </ul>
+  </section>
+  <footer>智慧雨林產業創生人才育成計畫 (南臺科技大學 電子系 楊榮林 教授)</footer>
+</main>
+<script>
+function currentSection(){return document.querySelector('section.'+document.documentElement.getAttribute('data-lang'))}
+function gotoSection(index){const headings=[...currentSection().querySelectorAll('h2')];if(headings[index])headings[index].scrollIntoView({behavior:'smooth',block:'start'});closeMenu()}
+function toggleMenu(){document.getElementById('sidebar').classList.toggle('open');document.getElementById('backdrop').classList.toggle('show')}
+function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('backdrop').classList.remove('show')}
+function buildSpy(){const headings=[...currentSection().querySelectorAll('h2')];const buttons=[...document.querySelectorAll('.navbtn')];const observer=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting){const index=headings.indexOf(entry.target);buttons.forEach((button,i)=>button.classList.toggle('active',i===index))}}},{rootMargin:'0px 0px -75% 0px',threshold:0});headings.forEach(heading=>observer.observe(heading))}
+function toggleTheme(){const html=document.documentElement;const dark=html.getAttribute('data-theme')==='light';html.setAttribute('data-theme',dark?'dark':'light');document.getElementById('themeBtn').textContent=dark?'☀️ Light':'🌙 Dark'}
+function toggleLang(){const html=document.documentElement;const english=html.getAttribute('data-lang')==='zh';html.setAttribute('data-lang',english?'en':'zh');html.setAttribute('lang',english?'en':'zh-Hant');document.getElementById('langBtn').textContent=english?'中文':'English';buildSpy()}
+document.addEventListener('DOMContentLoaded',buildSpy)
+</script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="dark" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agent 教學應用工作坊 Capstone 預覽：形成性評量系統設計意圖</title>
+<style>:root{color-scheme:dark;--bg:#f4f1ea;--fg:#1f2328;--muted:#687180;--card:#ebe7df;--border:#d6d0c5;--accent:#2563eb;--th-bg:#ded8cc;--shadow:0 1px 3px rgba(44,38,28,.09);--sidebar-w:284px;--content-max:1040px;--content-pad-x:44px;--content-pad-y:42px;--measure:76ch}[data-theme="dark"]{--bg:#101217;--fg:#e7eaf0;--muted:#a5aebd;--card:#181c24;--border:#2a3140;--accent:#7bb2ff;--th-bg:#202632;--shadow:0 1px 3px rgba(0,0,0,.42)}html{scroll-behavior:smooth}*{box-sizing:border-box}body{min-width:0;margin:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Microsoft JhengHei",Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.76;letter-spacing:0;transition:background .25s,color .25s}.wrap{width:min(var(--content-max),calc(100vw - var(--sidebar-w) - (var(--content-pad-x) * 2)));margin-left:calc(var(--sidebar-w) + max(var(--content-pad-x),(100vw - var(--sidebar-w) - var(--content-max)) / 2));padding:var(--content-pad-y) var(--content-pad-x) 88px}.sidebar{position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;overflow-y:auto;background:var(--card);border-right:1px solid var(--border);display:flex;flex-direction:column;gap:10px;padding:18px 14px;z-index:30}.brand{font-weight:700;font-size:1rem;line-height:1.35;padding:0 6px}.toprow{display:flex;flex-wrap:wrap;align-items:center;gap:8px}.navmode{display:flex;align-items:flex-start;gap:8px;margin:0 6px;color:var(--muted);font-size:13px;font-weight:650;line-height:1.35}.navmode input{width:16px;height:16px;margin:1px 0 0;accent-color:var(--accent)}.nav{display:flex;flex-direction:column;gap:4px;margin-top:6px}.navbtn,.navhome{cursor:pointer;border:1px solid transparent;background:transparent;color:var(--muted);border-radius:7px;padding:7px 10px;font-size:14px;font-weight:650;text-align:left;width:100%;white-space:normal;text-decoration:none}.navbtn:hover,.navbtn.active,.navhome:hover{color:var(--accent);border-color:var(--border);background:var(--bg)}.navhome{display:block;border-color:var(--border);background:var(--bg);color:var(--fg)}.btn{cursor:pointer;border:1px solid var(--border);background:var(--bg);color:var(--fg);border-radius:8px;padding:6px 12px;font-size:13px;font-weight:650}.btn:hover{border-color:var(--accent)}.menu-toggle{display:none;position:fixed;top:12px;left:12px;z-index:40;cursor:pointer;border:1px solid var(--border);background:var(--card);color:var(--fg);border-radius:8px;padding:6px 12px;font-size:18px;line-height:1}.backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.42);z-index:20}h1{max-width:var(--measure);font-size:2.15rem;line-height:1.28;margin:.2em 0 .35em}h2{font-size:1.48rem;margin-top:1.85em;padding-bottom:.25em;border-bottom:2px solid var(--border);scroll-margin-top:24px}h3{font-size:1.18rem;margin-top:1.55em;color:var(--accent)}h4{font-size:1.04rem;margin-top:1.25em;margin-bottom:.35em;color:var(--fg)}ul,ol{padding-left:1.3em}li{margin:.35em 0}p,li,blockquote{max-width:var(--measure);overflow-wrap:break-word}.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}table{width:100%;border-collapse:collapse;margin:1em 0;font-size:.94rem;box-shadow:var(--shadow);border-radius:8px;overflow:hidden}th,td{text-align:left;padding:10px 14px;border:1px solid var(--border);vertical-align:top}th{background:var(--th-bg);font-weight:750}td:first-child,th:first-child{white-space:nowrap}tbody tr:nth-child(even) td{background:var(--card)}figure{max-width:100%;margin:1.1em 0 1.35em;padding:10px;background:var(--card);border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow)}figure img{display:block;width:100%;height:auto;border-radius:6px}blockquote{margin:1.1em 0;padding:12px 16px;border-left:4px solid var(--accent);background:var(--card);color:var(--fg)}pre{overflow:auto;white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere;padding:12px 14px;background:var(--card);border:1px solid var(--border);border-radius:8px}code{font-family:"SFMono-Regular",Consolas,"Liberation Mono",monospace;font-size:.92em;color:var(--fg);background:var(--card);border:1px solid var(--border);border-radius:6px;padding:.08em .35em}pre code{border:0;padding:0;background:transparent}.nav code{border:0;background:transparent;color:inherit;padding:0}.site-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:1.2em 0}.site-card{display:flex;flex-direction:column;gap:6px;min-height:142px;padding:14px 16px;border:1px solid var(--border);border-radius:8px;background:var(--card);box-shadow:var(--shadow);text-decoration:none;color:var(--fg)}.site-card:hover{border-color:var(--accent)}.site-card strong{font-size:1.03rem;color:var(--fg)}.site-card span{color:var(--muted)}.download-list{display:grid;gap:8px;max-width:var(--measure);padding-left:0;list-style:none}.download-list a{display:block;padding:10px 12px;border:1px solid var(--border);border-radius:8px;background:var(--card);text-decoration:none}.download-list small{display:block;color:var(--muted)}table,pre{max-width:100%}a{color:var(--accent);overflow-wrap:anywhere}[data-lang="zh"] .en,[data-lang="en"] .zh{display:none}footer{margin-top:3em;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border);padding-top:1em}@media (min-width:1440px){:root{--sidebar-w:304px;--content-max:1080px;--content-pad-x:54px;--content-pad-y:48px}}@media (max-width:1100px){:root{--sidebar-w:230px;--content-max:840px;--content-pad-x:28px;--content-pad-y:32px}.sidebar{padding:16px 10px}.brand{font-size:.95rem}.navbtn,.navhome{font-size:13px;padding:7px 8px}}@media (max-width:860px){:root{--sidebar-w:min(82vw,320px);--content-pad-x:18px;--content-pad-y:0px;--measure:100%}.sidebar{transform:translateX(-100%);transition:transform .25s}.sidebar.open{transform:none}.wrap{width:100%;margin-left:0;padding:72px var(--content-pad-x) 80px}.menu-toggle{display:block}.backdrop.show{display:block}h1{font-size:1.75rem}h2{font-size:1.26rem}h3{font-size:1.08rem}p,li,blockquote{max-width:100%}.site-grid{grid-template-columns:1fr}}@media (max-width:520px){:root{--sidebar-w:min(88vw,300px);--content-pad-x:14px}.wrap{padding-top:68px}.menu-toggle{top:10px;left:10px;padding:7px 11px}.sidebar{padding:14px 10px}.toprow{gap:6px}.btn{padding:6px 10px;font-size:12px}.navmode{font-size:12px}.navbtn,.navhome{font-size:13px}h1{font-size:1.55rem}h2{font-size:1.18rem}th,td{padding:8px 10px}}</style>
+</head>
+<body>
+<button class="menu-toggle" id="menuToggle" onclick="toggleMenu()" type="button">☰</button>
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><span class="zh">AI Agent 教學應用工作坊 Capstone 預覽：形成性評量系統設計意圖</span><span class="en">AI Agent Teaching Applications Workshop Capstone Preview: Design Intent of the Formative Assessment System</span></div>
+  <div class="toprow"><button class="btn" id="langBtn" onclick="toggleLang()" type="button">English</button><button class="btn" id="themeBtn" onclick="toggleTheme()" type="button">☀️ Light</button></div>
+  <label class="navmode"><input id="slideNavMode" onchange="buildSpy()" type="checkbox"><span><span class="zh">導覽反思投影片</span><span class="en">Navigate reflection slides</span></span></label>
+  <a class="navhome return-control" href="index.html" aria-label="返回上一層 / Back to parent"><span class="zh">返回上一層</span><span class="en">Back to parent</span></a>
+  <nav class="nav"><button class="navbtn" onclick="gotoSection(0)" type="button"><span class="zh">快速閱讀地圖</span><span class="en">Quick Reading Map</span></button>
+<button class="navbtn" onclick="gotoSection(1)" type="button"><span class="zh">設計意圖：從「測驗」走向「學習回饋」</span><span class="en">Design Intent: From Tests to Learning Feedback</span></button>
+<button class="navbtn" onclick="gotoSection(2)" type="button"><span class="zh">教師端：掌握全班狀態</span><span class="en">Teacher Side: Understand the Whole-Class Status</span></button>
+<button class="navbtn" onclick="gotoSection(3)" type="button"><span class="zh">學生端：作答後能帶走回饋</span><span class="en">Student Side: Leave with Feedback After Answering</span></button>
+<button class="navbtn" onclick="gotoSection(4)" type="button"><span class="zh">Workshop 1、2、3 的學習期待</span><span class="en">Learning Expectations for Workshops 1, 2, and 3</span></button>
+<button class="navbtn" onclick="gotoSection(5)" type="button"><span class="zh">核心觀念</span><span class="en">Core Concepts</span></button>
+<button class="navbtn" onclick="gotoSection(6)" type="button"><span class="zh">注意事項</span><span class="en">Notes</span></button></nav>
+</aside>
+<div class="backdrop" id="backdrop" onclick="toggleMenu()"></div>
+<div class="wrap">
+  <section class="zh"><h1 id="ai-agent-capstone">AI Agent 教學應用工作坊 Capstone 預覽：形成性評量系統設計意圖</h1>
+<p>這份講義是 Workshop 1、2、3 開始前的自學與簡報參考。它先呈現整個系列最後希望完成的方向：從環境建置與 AI Agent 使用能力出發，進一步開發與發布網頁應用程式，最後整合成可進入課堂使用的形成性評量系統。</p>
+<p>這個範例系統可以先被理解成一個目標畫面。第一階段先掌握用途與教學意圖，技術細節會在後續工作坊逐步拆解。此處的重點是建立共同想像：經過 Workshop 1 的 AI Agent 工作環境與操作能力、Workshop 2 的網頁應用開發與發布流程、Workshop 3 的 AI 形成性評量系統建置後，AI Agent 可以被放進真實教學情境，協助教師建立自己的教學工具。</p>
+<h2 id="_1">快速閱讀地圖</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>主題</th>
+<th>重點</th>
+<th>學習意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>形成性評量</td>
+<td>評量不是只給分數，而是幫助教師知道學生現在懂到哪裡。</td>
+<td>評量資料可以成為課堂調整與學習補強的依據。</td>
+</tr>
+<tr>
+<td>教師端儀表板</td>
+<td>教師可以管理測驗、看到學生進度、正確率與作答狀態。</td>
+<td>全班狀態可以被即時觀察，而不是等到課後才整理。</td>
+</tr>
+<tr>
+<td>學生端作答畫面</td>
+<td>學生可以登入、作答、提交，並取得可回頭檢查的紀錄。</td>
+<td>作答流程要簡單，回饋資料要能被學生帶走。</td>
+</tr>
+<tr>
+<td>提交後的回饋</td>
+<td>分數只是起點，錯題與作答紀錄才是後續補強的材料。</td>
+<td>學生可以知道自己該回頭看哪些概念。</td>
+</tr>
+<tr>
+<td>AI 輔助教學</td>
+<td>AI 適合用來協助診斷、整理複習方向與產生延伸練習。</td>
+<td>AI 的位置是學習鷹架，而不是代替學生理解。</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="_2">設計意圖：從「測驗」走向「學習回饋」</h2>
+<p>形成性評量的核心不是考倒學生，而是在課堂中快速回答三個問題：</p>
+<ul>
+<li>學生是否理解剛剛的概念？</li>
+<li>哪些學生或哪些題型需要教師再補充？</li>
+<li>學生作答後，能不能取得下一步複習方向？</li>
+</ul>
+<p>如果評量資料只停留在分數，教師能做的判斷有限，學生也只知道自己考幾分。這個範例系統示範的是另一種設計方向：把作答進度、正確率、錯題紀錄與教材內容串起來，讓評量變成課堂中的即時訊號，也變成學生課後使用 AI 補強的材料。</p>
+<h2 id="_3">教師端：掌握全班狀態</h2>
+<p><figure><img alt="形成性評量系統：教師端測驗清單" src="assets/capstone-assessment-preview/dashboard-overview.png"></figure></p>
+<p>教師端儀表板的第一個用途，是讓教師選擇本次課堂要使用的測驗。這裡可以看到課程、題組與不同 assessment。設計重點不是炫技，而是讓教師能依照教學進度快速切換適合的短測驗。</p>
+<p><figure><img alt="形成性評量系統：教師端即時作答狀態" src="assets/capstone-assessment-preview/live-status-roster.png"></figure></p>
+<p>第二個用途，是讓教師即時看到學生正在做哪一份測驗、目前完成幾題、正確率如何、是否已提交。這些資訊可以幫助教師在課中做判斷：要繼續往下講、停下來補充，還是安排個別協助。</p>
+<p><figure><img alt="形成性評量系統：教師端個別學生作答細節" src="assets/capstone-assessment-preview/student-progress-detail.png"></figure></p>
+<p>個別學生的細節畫面則用來觀察學習行為，例如作答速度、正確率變化與答題進度。這些標記只能當作教學觀察線索，不應直接當成懲罰依據。形成性評量的目標是協助學生補強，而不是把即時資料變成壓力來源。</p>
+<h2 id="_4">學生端：作答後能帶走回饋</h2>
+<p><figure><img alt="形成性評量系統：學生端登入與測驗選擇" src="assets/capstone-assessment-preview/student-identity-check.png"></figure></p>
+<p>學生端流程從登入與選擇測驗開始。這一步的教學意義是確保作答紀錄能正確對應到學生本人，後續才有可能做個別化回饋。</p>
+<p><figure><img alt="形成性評量系統：學生端逐題作答" src="assets/capstone-assessment-preview/student-answer-view.png"></figure></p>
+<p>作答畫面讓學生逐題回答、查看目前進度，並在完成後提交。學生端的重點是降低作答摩擦，讓短測驗可以在課堂中快速完成，同時留下可回頭檢查的作答紀錄。</p>
+<p><figure><img alt="形成性評量系統：學生端測驗結果摘要" src="assets/capstone-assessment-preview/student-result-summary.png"></figure></p>
+<p>提交後，學生可以看到成績、正確率與簡短診斷。分數不是終點，而是後續學習補強的入口。</p>
+<p><figure><img alt="形成性評量系統：學生端作答回顧" src="assets/capstone-assessment-preview/student-answer-review.png"></figure></p>
+<p>作答回顧會顯示每題的答題結果、學生答案與正確答案。這份紀錄可以搭配教材交給 AI，請 AI 協助分析錯誤概念、建議複習段落，或產生相似但不同的練習題。</p>
+<h2 id="workshop-123">Workshop 1、2、3 的學習期待</h2>
+<p>這個範例不是要在一開始就複製完整系統，而是呈現系列工作坊逐步累積的能力路徑。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Workshop</th>
+<th>學習重點</th>
+<th>對應到範例系統</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Workshop 1</td>
+<td>建立 AI Agent 工作環境與使用能力。</td>
+<td>完成個人筆電工具安裝與驗證，理解對話式 AI、雲端 AI 服務與本地端 AI Agent 的差異，並實作開啟軟體、瀏覽網頁、擷取資料、整理資訊等任務流程。</td>
+</tr>
+<tr>
+<td>Workshop 2</td>
+<td>利用 AI Agent 開發與發布網頁應用程式。</td>
+<td>以自然語言描述需求，透過 AI Agent 協助系統規劃、程式碼產生、功能修改、除錯、文件撰寫與 GitHub Pages 發布，建立可分享的教學應用。</td>
+</tr>
+<tr>
+<td>Workshop 3</td>
+<td>建置 AI 形成性評量系統。</td>
+<td>完成教師端 Dashboard 與學生端測驗介面，掌握作答進度與學習表現，並建立由教材生成評量題目、驗證答案與分析題目品質的流程。</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="_5">核心觀念</h2>
+<ul>
+<li>這不是期末考系統，而是課堂中用來觀察理解狀態的工具。</li>
+<li>教師端看的是全班狀態，學生端拿到的是自己的學習線索。</li>
+<li>AI 不應該只是代答工具，而是作答後協助診斷與補強的學習鷹架。</li>
+<li>這個畫面是系列工作坊的 Capstone 想像：前兩階段建立 AI Agent 使用與網頁應用開發能力，第三階段整合成能實際進入課堂使用的形成性評量工具。</li>
+</ul>
+<h2 id="_6">注意事項</h2>
+<ul>
+<li>學生姓名、學號、成績與作答紀錄都屬於需要保護的資料。</li>
+<li>若要使用外部 AI 分析錯題，應盡量去識別化，只提供必要的題目、學生選項與教材摘要。</li>
+<li>即時作答狀態只能輔助教師判斷，不能取代教師對學生學習狀況的理解。</li>
+<li>評量設計的目標是幫助學生知道下一步怎麼學，而不是只建立更多測驗。</li>
+</ul></section>
+  <section class="en"><h1 id="ai-agent-teaching-applications-workshop-capstone-preview-design-intent-of-the-formative-assessment-system">AI Agent Teaching Applications Workshop Capstone Preview: Design Intent of the Formative Assessment System</h1>
+<p>這份講義是 Workshop 1、2、3 開始前的自學與簡報參考。它先呈現整個系列最後希望完成的方向：從環境建置與 AI Agent 使用能力出發，進一步開發與發布網頁應用程式，最後整合成可進入課堂使用的形成性評量系統。</p>
+<p>這個範例系統可以先被理解成一個目標畫面。第一階段先掌握用途與教學意圖，技術細節會在後續工作坊逐步拆解。此處的重點是建立共同想像：經過 Workshop 1 的 AI Agent 工作環境與操作能力、Workshop 2 的網頁應用開發與發布流程、Workshop 3 的 AI 形成性評量系統建置後，AI Agent 可以被放進真實教學情境，協助教師建立自己的教學工具。</p>
+<h2 id="quick-reading-map">Quick Reading Map</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Topic</th>
+<th>重點</th>
+<th>學習意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>形成性評量</td>
+<td>評量不是只給分數，而是幫助teachers知道students現在懂到哪裡。</td>
+<td>評量data可以成為課堂調整與學習補強的依據。</td>
+</tr>
+<tr>
+<td>teachers端儀表板</td>
+<td>teachers可以管理測驗、看到students進度、正確率與作答狀態。</td>
+<td>全班狀態可以被即時觀察，而不是等到課後才整理。</td>
+</tr>
+<tr>
+<td>students端作答畫面</td>
+<td>students可以登入、作答、提交，並取得可回頭check的紀錄。</td>
+<td>作答workflow要簡單，回饋data要能被students帶走。</td>
+</tr>
+<tr>
+<td>提交後的回饋</td>
+<td>分數只是起點，錯題與作答紀錄才是後續補強的材料。</td>
+<td>students可以知道自己該回頭看哪些概念。</td>
+</tr>
+<tr>
+<td>AI 輔助教學</td>
+<td>AI 適合用來協助診斷、整理複習方向與產生延伸practice。</td>
+<td>AI 的位置是學習鷹架，而不是代替students理解。</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="design-intent-from-tests-to-learning-feedback">Design Intent: From Tests to Learning Feedback</h2>
+<p>形成性評量的核心不是考倒學生，而是在課堂中快速回答三個問題：</p>
+<ul>
+<li>students是否理解剛剛的概念？</li>
+<li>哪些students或哪些題型需要teachers再補充？</li>
+<li>students作答後，能不能取得下一步複習方向？</li>
+</ul>
+<p>如果評量資料只停留在分數，教師能做的判斷有限，學生也只知道自己考幾分。這個範例系統示範的是另一種設計方向：把作答進度、正確率、錯題紀錄與教材內容串起來，讓評量變成課堂中的即時訊號，也變成學生課後使用 AI 補強的材料。</p>
+<h2 id="teacher-side-understand-the-whole-class-status">Teacher Side: Understand the Whole-Class Status</h2>
+<p><figure><img alt="形成性評量系統：教師端測驗清單" src="assets/capstone-assessment-preview/dashboard-overview.png"></figure></p>
+<p>教師端儀表板的第一個用途，是讓教師選擇本次課堂要使用的測驗。這裡可以看到課程、題組與不同 assessment。設計重點不是炫技，而是讓教師能依照教學進度快速切換適合的短測驗。</p>
+<p><figure><img alt="形成性評量系統：教師端即時作答狀態" src="assets/capstone-assessment-preview/live-status-roster.png"></figure></p>
+<p>第二個用途，是讓教師即時看到學生正在做哪一份測驗、目前完成幾題、正確率如何、是否已提交。這些資訊可以幫助教師在課中做判斷：要繼續往下講、停下來補充，還是安排個別協助。</p>
+<p><figure><img alt="形成性評量系統：教師端個別學生作答細節" src="assets/capstone-assessment-preview/student-progress-detail.png"></figure></p>
+<p>個別學生的細節畫面則用來觀察學習行為，例如作答速度、正確率變化與答題進度。這些標記只能當作教學觀察線索，不應直接當成懲罰依據。形成性評量的目標是協助學生補強，而不是把即時資料變成壓力來源。</p>
+<h2 id="student-side-leave-with-feedback-after-answering">Student Side: Leave with Feedback After Answering</h2>
+<p><figure><img alt="形成性評量系統：學生端登入與測驗選擇" src="assets/capstone-assessment-preview/student-identity-check.png"></figure></p>
+<p>學生端流程從登入與選擇測驗開始。這一步的教學意義是確保作答紀錄能正確對應到學生本人，後續才有可能做個別化回饋。</p>
+<p><figure><img alt="形成性評量系統：學生端逐題作答" src="assets/capstone-assessment-preview/student-answer-view.png"></figure></p>
+<p>作答畫面讓學生逐題回答、查看目前進度，並在完成後提交。學生端的重點是降低作答摩擦，讓短測驗可以在課堂中快速完成，同時留下可回頭檢查的作答紀錄。</p>
+<p><figure><img alt="形成性評量系統：學生端測驗結果摘要" src="assets/capstone-assessment-preview/student-result-summary.png"></figure></p>
+<p>提交後，學生可以看到成績、正確率與簡短診斷。分數不是終點，而是後續學習補強的入口。</p>
+<p><figure><img alt="形成性評量系統：學生端作答回顧" src="assets/capstone-assessment-preview/student-answer-review.png"></figure></p>
+<p>作答回顧會顯示每題的答題結果、學生答案與正確答案。這份紀錄可以搭配教材交給 AI，請 AI 協助分析錯誤概念、建議複習段落，或產生相似但不同的練習題。</p>
+<h2 id="learning-expectations-for-workshops-1-2-and-3">Learning Expectations for Workshops 1, 2, and 3</h2>
+<p>這個範例不是要在一開始就複製完整系統，而是呈現系列工作坊逐步累積的能力路徑。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Workshop</th>
+<th>學習重點</th>
+<th>對應到範例系統</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Workshop 1</td>
+<td>建立 AI Agent 工作環境與使用能力。</td>
+<td>完成個人筆電工具安裝與驗證，理解對話式 AI、雲端 AI 服務與本地端 AI Agent 的差異，並實作開啟軟體、瀏覽網頁、擷取data、整理資訊等任務workflow。</td>
+</tr>
+<tr>
+<td>Workshop 2</td>
+<td>利用 AI Agent 開發與發布網頁應用程式。</td>
+<td>以自然語言描述需求，透過 AI Agent 協助系統規劃、程式碼產生、功能修改、除錯、文件撰寫與 GitHub Pages 發布，建立可分享的教學應用。</td>
+</tr>
+<tr>
+<td>Workshop 3</td>
+<td>建置 AI 形成性評量系統。</td>
+<td>完成teachers端 Dashboard 與students端測驗介面，掌握作答進度與學習表現，並建立由教材生成評量題目、驗證答案與analysis題目品質的workflow。</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="core-concepts">Core Concepts</h2>
+<ul>
+<li>這不是期末考系統，而是課堂中用來觀察理解狀態的工具。</li>
+<li>teachers端看的是全班狀態，students端拿到的是自己的學習線索。</li>
+<li>AI 不應該只是代答工具，而是作答後協助診斷與補強的學習鷹架。</li>
+<li>這個畫面是系列workshop的 Capstone 想像：前兩階段建立 AI Agent 使用與網頁應用開發能力，第三階段整合成能實際進入課堂使用的形成性評量工具。</li>
+</ul>
+<h2 id="notes">Notes</h2>
+<ul>
+<li>students姓名、學號、成績與作答紀錄都屬於需要保護的data。</li>
+<li>若要使用外部 AI analysis錯題，應盡量去識別化，只提供必要的題目、students選項與教材摘要。</li>
+<li>即時作答狀態只能輔助teachers判斷，不能取代teachers對students學習狀況的理解。</li>
+<li>評量設計的目標是幫助students知道下一步怎麼學，而不是只建立更多測驗。</li>
+</ul></section>
+  <footer>智慧雨林產業創生人才育成計畫 (南臺科技大學 電子系 楊榮林 教授)</footer>
+</div>
+<script>function currentSection(){const lang=document.documentElement.getAttribute('data-lang');return document.querySelector('section.'+lang)}function navUsesSlides(){const box=document.getElementById('slideNavMode');return !!(box&&box.checked)}function targetForHead(head){if(!navUsesSlides())return head;const prev=head.previousElementSibling;if(prev&&(prev.classList.contains('full-screen-image')||prev.querySelector('img')))return prev;return head}function navTargets(){const section=currentSection();if(!section)return[];return[...section.querySelectorAll('h2')].map(targetForHead)}function gotoSection(i){const targets=navTargets();if(targets[i])targets[i].scrollIntoView({behavior:'smooth',block:'start'});closeMenu()}function toggleMenu(){document.getElementById('sidebar').classList.toggle('open');document.getElementById('backdrop').classList.toggle('show')}function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('backdrop').classList.remove('show')}let spy;function buildSpy(){if(spy)spy.disconnect();const targets=navTargets();const btns=[...document.querySelectorAll('.nav .navbtn')];spy=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const idx=targets.indexOf(e.target);btns.forEach((b,i)=>b.classList.toggle('active',i===idx))}})},{rootMargin:'0px 0px -75% 0px',threshold:0});targets.forEach(t=>spy.observe(t))}document.addEventListener('DOMContentLoaded',buildSpy);function toggleTheme(){const html=document.documentElement;const goingDark=html.getAttribute('data-theme')==='light';html.setAttribute('data-theme',goingDark?'dark':'light');document.getElementById('themeBtn').textContent=goingDark?'☀️ Light':'🌙 Dark'}function toggleLang(){const html=document.documentElement;const goingEn=html.getAttribute('data-lang')==='zh';html.setAttribute('data-lang',goingEn?'en':'zh');html.setAttribute('lang',goingEn?'en':'zh-Hant');document.getElementById('langBtn').textContent=goingEn?'中文':'English';buildSpy()}</script>
+</body>
+</html>

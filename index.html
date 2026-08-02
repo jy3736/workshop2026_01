@@ -3,231 +3,373 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Workshop 2026</title>
+  <title>Workshop 2026 Instructional Materials</title>
   <style>
     :root {
       color-scheme: dark;
-      --bg: #090d16;
-      --bg-soft: #0f1522;
-      --card: #131a2a;
-      --card-2: #182235;
-      --text: #e6ecf7;
-      --muted: #a8b3c7;
-      --accent: #7fb0ff;
-      --accent-2: #5393ff;
-      --line: #2a3a58;
-      --shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+      --bg: #11110f;
+      --panel: #191917;
+      --panel-2: #20201d;
+      --text: #f2eee6;
+      --muted: #bcb5a9;
+      --line: #39362f;
+      --teal: #53c7b3;
+      --coral: #ff7a66;
+      --gold: #d8b95f;
+      --sage: #8fbf6f;
+      --shadow: 0 24px 70px rgba(0, 0, 0, .36);
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
-      margin: 0;
-      font-family: "Avenir Next", "PingFang TC", "Microsoft JhengHei", sans-serif;
-      background:
-        radial-gradient(1100px 600px at 8% -10%, #1b2b48 0%, transparent 55%),
-        radial-gradient(1000px 500px at 92% 0%, #1c2740 0%, transparent 52%),
-        var(--bg);
-      color: var(--text);
       min-height: 100vh;
+      margin: 0;
+      color: var(--text);
+      background:
+        linear-gradient(135deg, rgba(83, 199, 179, .14), transparent 34%),
+        linear-gradient(315deg, rgba(255, 122, 102, .12), transparent 38%),
+        var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", Arial, sans-serif;
       line-height: 1.65;
+      letter-spacing: 0;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    dd {
+      overflow-wrap: anywhere;
     }
 
     .page {
-      width: min(980px, 100% - 32px);
-      margin: 34px auto 50px;
-    }
-
-    .hero,
-    .panel,
-    .links {
-      background: linear-gradient(160deg, rgba(27, 38, 61, 0.55) 0%, rgba(18, 25, 41, 0.9) 60%);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      box-shadow: var(--shadow);
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 42px 0 56px;
     }
 
     .hero {
-      padding: 28px;
-      margin-bottom: 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, .9fr);
+      gap: 28px;
+      align-items: end;
+      min-height: 45vh;
+      padding: 48px 0 28px;
     }
 
-    .kicker {
-      margin: 0;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-      font-size: 0.82rem;
+    .hero > *,
+    .section-head > *,
+    .material-card {
+      min-width: 0;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--teal);
+      font-size: .86rem;
+      font-weight: 800;
+      letter-spacing: .08em;
       text-transform: uppercase;
     }
 
     h1 {
-      margin: 10px 0 0;
-      font-size: clamp(1.8rem, 3.2vw, 2.8rem);
-      line-height: 1.15;
-    }
-
-    .panel {
-      padding: 24px;
-      margin-bottom: 18px;
-    }
-
-    h2 {
+      max-width: 760px;
       margin: 0;
-      font-size: 1.95rem;
+      font-size: clamp(2.1rem, 5.4vw, 4.7rem);
+      line-height: 1.02;
+      text-wrap: balance;
     }
 
-    .divider {
-      height: 2px;
-      border: 0;
-      margin: 12px 0 18px;
-      background: linear-gradient(90deg, var(--accent-2), transparent 70%);
+    h1 span {
+      display: block;
     }
 
-    .meta {
-      margin: 0;
-      padding-left: 1.2rem;
-      color: var(--text);
-      font-size: 1.03rem;
-    }
-
-    .meta li + li {
-      margin-top: 6px;
-    }
-
-    .section-label {
-      margin: 22px 0 10px;
-      font-size: 1.35rem;
-      font-weight: 700;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: rgba(9, 14, 24, 0.66);
-    }
-
-    th,
-    td {
-      text-align: left;
-      padding: 14px 16px;
-      border-bottom: 1px solid rgba(47, 66, 97, 0.58);
-      font-size: 1.05rem;
-    }
-
-    th {
-      background: var(--card-2);
-      font-size: 1.08rem;
-    }
-
-    tbody tr:last-child td {
-      border-bottom: 0;
-    }
-
-    .links {
-      padding: 20px;
-    }
-
-    .links h3 {
-      margin: 0 0 10px;
-      font-size: 1.2rem;
+    .lead {
+      max-width: min(620px, 100%);
+      margin: 20px 0 0;
       color: var(--muted);
-      letter-spacing: 0.02em;
+      font-size: clamp(1.02rem, 1.6vw, 1.22rem);
     }
 
-    .link-grid {
+    .course-panel {
+      max-width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(25, 25, 23, .78);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .course-panel h2 {
+      margin: 0 0 12px;
+      font-size: 1.05rem;
+      color: var(--gold);
+    }
+
+    .course-panel dl {
       display: grid;
-      gap: 12px;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      grid-template-columns: auto 1fr;
+      gap: 8px 14px;
+      margin: 0;
     }
 
-    .link-card {
-      display: block;
-      text-decoration: none;
-      color: var(--text);
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      background: rgba(22, 30, 48, 0.72);
-      padding: 14px 15px;
-      transition: transform .15s ease, border-color .15s ease;
-    }
-
-    .link-card strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 1.05rem;
-    }
-
-    .link-card span {
-      display: block;
+    .course-panel dt {
       color: var(--muted);
-      font-size: 0.94rem;
+      white-space: nowrap;
     }
 
-    .link-card:hover {
-      transform: translateY(-2px);
-      border-color: var(--accent);
+    .course-panel dd {
+      margin: 0;
+      color: var(--text);
     }
 
-    @media (max-width: 640px) {
-      .hero,
-      .panel,
-      .links {
+    .materials {
+      padding-top: 18px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+      border-top: 1px solid var(--line);
+      padding-top: 26px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.45rem, 2.4vw, 2rem);
+    }
+
+    .section-head p {
+      max-width: 460px;
+      margin: 0;
+      color: var(--muted);
+      text-align: left;
+    }
+
+    .material-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+
+    .material-card {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      min-height: 320px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(180deg, var(--panel-2), var(--panel));
+      box-shadow: 0 14px 34px rgba(0, 0, 0, .22);
+      text-decoration: none;
+      transition: transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    .material-card:hover,
+    .material-card:focus-visible {
+      transform: translateY(-4px);
+      border-color: currentColor;
+      outline: 0;
+      background: linear-gradient(180deg, #25241f, var(--panel));
+    }
+
+    .material-card:nth-child(1) {
+      color: var(--teal);
+    }
+
+    .material-card:nth-child(2) {
+      color: var(--coral);
+    }
+
+    .material-card:nth-child(3) {
+      color: var(--gold);
+    }
+
+    .material-card:nth-child(4) {
+      color: var(--sage);
+    }
+
+    .date {
+      width: fit-content;
+      margin-bottom: 24px;
+      border: 1px solid currentColor;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: .82rem;
+      font-weight: 800;
+    }
+
+    .material-card h3 {
+      margin: 0 0 10px;
+      color: var(--text);
+      font-size: 1.34rem;
+      line-height: 1.25;
+    }
+
+    .material-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 28px;
+      color: currentColor;
+      font-weight: 800;
+    }
+
+    .cta::after {
+      content: "->";
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    footer {
+      margin-top: 32px;
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    @media (max-width: 880px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: 0;
+        padding-top: 28px;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-head p {
+        margin-top: 8px;
+        text-align: left;
+      }
+
+      .material-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .material-card {
+        min-height: 240px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page {
+        width: min(1120px, calc(100% - 24px));
+        padding-bottom: 36px;
+      }
+
+      .hero {
+        padding-top: 22px;
+      }
+
+      .course-panel {
         padding: 16px;
       }
 
-      th,
-      td {
-        padding: 11px 10px;
-        font-size: 0.96rem;
+      .course-panel dl {
+        grid-template-columns: 1fr;
+        gap: 2px 0;
       }
 
-      h2 {
-        font-size: 1.6rem;
+      .course-panel dd + dt {
+        margin-top: 8px;
+      }
+
+      .material-card {
+        padding: 18px;
       }
     }
   </style>
 </head>
 <body>
   <main class="page">
-    <section class="hero">
-      <p class="kicker">Workshop 2026</p>
-      <h1>AI Agent 教學應用工作坊 (一)</h1>
+    <section class="hero" aria-labelledby="site-title">
+      <div>
+        <p class="eyebrow">Workshop 2026</p>
+        <h1 id="site-title"><span>AI 教學應用</span><span>工作坊教材入口</span></h1>
+        <p class="lead">四份可直接瀏覽的靜態教材頁面，整理 7/2、7/8、7/9、8/3 場次的課程入口、操作講義與課堂下載資源。</p>
+      </div>
+
+      <aside class="course-panel" aria-label="課程資訊">
+        <h2>課程資訊</h2>
+        <dl>
+          <dt>主辦</dt>
+          <dd>教育部智慧雨林產業創生人才育成計畫辦公室</dd>
+          <dt>主題</dt>
+          <dd>AI Agent 工作環境建立與教學應用</dd>
+          <dt>對象</dt>
+          <dd>智慧雨林產業創生人才育成計畫團隊教師</dd>
+          <dt>講者</dt>
+          <dd>南臺科技大學電子系 楊榮林 教授</dd>
+        </dl>
+      </aside>
     </section>
 
-    <section class="panel" aria-labelledby="course-info">
-      <h2 id="course-info">課程資訊</h2>
-      <hr class="divider">
-      <ul class="meta">
-        <li>主辦：教育部智慧雨林產業創生人才育成計畫辦公室</li>
-        <li>主題：AI Agent 工作環境建立與使用</li>
-        <li>對象：智慧雨林產業創生人才育成計畫團隊教師</li>
-        <li>主講人：南臺科技大學電子系 楊榮林 教授</li>
-        <li>地點：南臺科技大學 J 棟 J301 教室</li>
-      </ul>
+    <section class="materials" aria-labelledby="materials-title">
+      <div class="section-head">
+        <h2 id="materials-title">教材頁面</h2>
+        <p>每張卡片連到一個完整場次入口，內含對應講義、模組、下載檔或練習材料。</p>
+      </div>
 
-    </section>
+      <div class="material-grid">
+        <a class="material-card" href="./0803/index.html">
+          <div>
+            <div class="date">2026.08.03</div>
+            <h3>AI Agent 教學應用工作坊（一）更新版</h3>
+            <p>0709 場次的改版教材，新增 ChatGPT Work 與 Codex 使用指引、統測試題 Markdown 題庫與切題流程，以及 Capstone 形成性評量預覽。</p>
+          </div>
+          <span class="cta">開啟 0803 教材</span>
+        </a>
 
-    <section class="links" aria-labelledby="entry-links">
-      <h3 id="entry-links">工作坊入口</h3>
-      <div class="link-grid">
-        <a class="link-card" href="./0709/index.html">
-          <strong>Workshop 1 (0709)</strong>
-          <span>AI Agent 教學應用工作坊（一）站點入口（7/9 場次）</span>
+        <a class="material-card" href="./0709/index.html">
+          <div>
+            <div class="date">2026.07.09</div>
+            <h3>AI Agent 教學應用工作坊（一）</h3>
+            <p>整合課程大綱、Windows 11 環境建置、Codex 設定、問卷 workbook 分析與課堂下載。</p>
+          </div>
+          <span class="cta">開啟 0709 教材</span>
         </a>
-        <a class="link-card" href="./0702/index.html">
-          <strong>Workshop 1 (0702)</strong>
-          <span>AI Agent 教學應用工作坊（一）站點入口（7/2 場次）</span>
+
+        <a class="material-card" href="./0708/index.html">
+          <div>
+            <div class="date">2026.07.08</div>
+            <h3>企業 AI 導入入門</h3>
+            <p>以工作現場盤點與 Excel 工時計算案例為核心，協助理解 AI 能先支援哪些實務流程。</p>
+          </div>
+          <span class="cta">開啟 0708 教材</span>
         </a>
-        <a class="link-card" href="./0708/index.html">
-          <strong>企業 AI 導入入門 (0708)</strong>
-          <span>從工作現場盤點開始，用 Excel 工時計算案例理解 AI 可以先幫上什麼忙</span>
+
+        <a class="material-card" href="./0702/index.html">
+          <div>
+            <div class="date">2026.07.02</div>
+            <h3>AI Agent 教學應用工作坊（一）</h3>
+            <p>包含環境建置、Codex 介紹、Module 2 練習與 Module 3 Playground 的自學式教材入口。</p>
+          </div>
+          <span class="cta">開啟 0702 教材</span>
         </a>
       </div>
     </section>
+
+    <footer>
+      Published for GitHub Pages at workshop2026_01.
+    </footer>
   </main>
 </body>
 </html>
