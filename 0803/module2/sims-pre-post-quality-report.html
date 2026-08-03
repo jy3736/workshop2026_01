@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SIMS 前後測問卷品質報告</title>
+  <style>
+    :root { color-scheme: dark; --bg:#0b1220; --panel:#121d30; --panel-2:#17243a; --line:#2b3a53; --text:#edf3fc; --muted:#aab9cf; --heading:#fff; --accent:#5eead4; --accent-soft:#153e46; --warn:#fbbf24; --danger:#fda4af; letter-spacing:0; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:"PingFang TC","Noto Sans TC",system-ui,sans-serif; line-height:1.65; }
+    main { width:min(1160px,calc(100% - 38px)); margin:0 auto; padding:24px 0 44px; }
+    .topbar { display:flex; align-items:start; justify-content:space-between; gap:22px; padding:6px 0 24px; border-bottom:1px solid var(--line); }
+    .eyebrow { margin:0 0 4px; color:var(--accent); font-size:.8rem; font-weight:700; letter-spacing:.08em; }
+    h1 { margin:0; color:var(--heading); font-size:clamp(1.8rem,4vw,2.65rem); line-height:1.25; }
+    .muted { margin:10px 0 0; max-width:760px; color:var(--muted); }
+    .language-toggle { display:flex; flex:0 0 auto; gap:6px; }
+    button { cursor:pointer; border:1px solid var(--line); border-radius:6px; padding:7px 11px; background:var(--panel); color:var(--muted); font:inherit; font-size:.9rem; }
+    button[aria-pressed="true"] { border-color:var(--accent); background:var(--accent-soft); color:var(--heading); }
+    .page-layout { display:grid; grid-template-columns:230px minmax(0,1fr); gap:18px; align-items:start; margin-top:22px; }
+    .catalog { position:sticky; top:16px; padding:12px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+    .catalog-title { margin:0 0 8px; color:var(--heading); font-size:.9rem; font-weight:700; }
+    .catalog-list { display:grid; gap:5px; list-style:none; margin:0; padding:0; }
+    .catalog-link { display:block; padding:8px 9px; border-radius:6px; color:var(--muted); text-decoration:none; font-size:.9rem; }
+    .catalog-link:hover, .catalog-link:focus-visible { background:var(--accent-soft); color:var(--heading); }
+    article { min-width:0; }
+    section { padding:22px 0; border-bottom:1px solid var(--line); scroll-margin-top:14px; }
+    section:first-child { padding-top:0; }
+    h2 { margin:0 0 12px; color:var(--heading); font-size:1.3rem; }
+    p { margin:8px 0; }
+    .lead { font-size:1.06rem; }
+    .metrics { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:17px 0 0; }
+    .metric { min-width:0; padding:14px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+    .metric span { display:block; color:var(--muted); font-size:.84rem; }
+    .metric strong { display:block; margin-top:3px; color:var(--heading); font-size:1.5rem; }
+    .callout { margin-top:14px; padding:12px 14px; border-left:3px solid var(--warn); border-radius:6px; background:#31280e; }
+    .good { border-left-color:var(--accent); background:#0f2e31; }
+    .table-wrap { overflow-x:auto; border:1px solid var(--line); border-radius:8px; }
+    table { width:100%; min-width:640px; border-collapse:collapse; font-size:.94rem; }
+    th, td { padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    tr:last-child td { border-bottom:0; }
+    th { background:var(--panel-2); color:var(--heading); white-space:nowrap; }
+    .num { text-align:right; font-variant-numeric:tabular-nums; }
+    .up { color:var(--accent); font-weight:700; } .down { color:var(--danger); font-weight:700; }
+    ul { margin:8px 0; padding-left:1.35rem; }
+    .tag { display:inline-block; margin-bottom:8px; padding:2px 7px; border-radius:999px; color:var(--accent); background:var(--accent-soft); font-size:.8rem; font-weight:700; }
+    footer { padding-top:20px; color:var(--muted); font-size:.86rem; }
+    code { color:#c4f1ec; }
+    @media (max-width:860px) { .page-layout { grid-template-columns:1fr; } .catalog { position:sticky; top:0; z-index:2; overflow-x:auto; } .catalog-list { display:flex; gap:5px; min-width:max-content; } .catalog-link { white-space:nowrap; } }
+    @media (max-width:660px) { main { width:min(100% - 28px,1160px); } .topbar { display:block; } .language-toggle { margin-top:14px; } .metrics { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:380px) { .metrics { grid-template-columns:1fr; } }
+    @media print { :root { color-scheme:light; } body { background:#fff; color:#172033; } .catalog,.metric,.table-wrap { background:#fff; } .catalog,.metric,.table-wrap,section,.topbar { border-color:#cbd5e1; } h1,h2,th { color:#172033; } th { background:#f1f5f9; } .muted,.catalog-link,footer,.metric span { color:#475569; } .language-toggle,.catalog { display:none; } .page-layout { display:block; } .callout { background:#fff8e6; } .good { background:#eafff8; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">SITUATIONAL MOTIVATION SCALE · QUALITY CHECK</p>
+        <h1 data-i18n-key="pageTitle">SIMS 前後測問卷品質報告</h1>
+        <p class="muted" data-i18n-key="pageSubtitle">16 題 SIMS 的資料完整性、內部一致性與內容對應檢核；僅呈現彙整結果。</p>
+      </div>
+      <div class="language-toggle" aria-label="Language">
+        <button type="button" data-lang-button="zh" aria-pressed="true">中文</button>
+        <button type="button" data-lang-button="en" aria-pressed="false">English</button>
+      </div>
+    </header>
+    <div class="page-layout">
+      <nav class="catalog" aria-label="Report catalog">
+        <div class="catalog-title" data-i18n-key="catalogTitle">報告目錄</div>
+        <ul class="catalog-list" data-catalog-list="zh">
+          <li><a class="catalog-link" href="#zh-summary">結論與資料摘要</a></li>
+          <li><a class="catalog-link" href="#zh-quality">資料品質與量表設定</a></li>
+          <li><a class="catalog-link" href="#zh-reliability">信度結果</a></li>
+          <li><a class="catalog-link" href="#zh-means">構面平均數</a></li>
+          <li><a class="catalog-link" href="#zh-limits">效度與使用限制</a></li>
+        </ul>
+        <ul class="catalog-list" data-catalog-list="en" hidden>
+          <li><a class="catalog-link" href="#en-summary">Summary and sample</a></li>
+          <li><a class="catalog-link" href="#en-quality">Data quality and scoring</a></li>
+          <li><a class="catalog-link" href="#en-reliability">Reliability results</a></li>
+          <li><a class="catalog-link" href="#en-means">Subscale means</a></li>
+          <li><a class="catalog-link" href="#en-limits">Validity and limits</a></li>
+        </ul>
+      </nav>
+      <div class="content">
+        <article class="lang-panel" data-lang-panel="zh">
+          <section id="zh-summary">
+            <h2>結論與資料摘要</h2>
+            <p class="lead">兩個時點的資料皆完整，反向計分後的全量表內部一致性良好：前測 Cronbach’s α = <strong>.927</strong>，後測 α = <strong>.893</strong>。四個 SIMS 構面的 α 皆達可接受以上水準，可作為兩個調查時點的動機描述依據。</p>
+            <div class="metrics"><div class="metric"><span>前測有效作答</span><strong>39</strong></div><div class="metric"><span>後測有效作答</span><strong>41</strong></div><div class="metric"><span>各時點遺漏作答</span><strong>0</strong></div><div class="metric"><span>可配對識別碼</span><strong>35</strong></div></div>
+            <div class="callout"><strong>解讀界線：</strong>前、後測分別有 39 與 41 份作答，只有 35 筆可依識別碼配對。跨時點的結果僅是描述性比較，尚未進行配對統計檢定；因此不據此宣稱教學效果。</div>
+          </section>
+          <section id="zh-quality">
+            <h2>資料品質與量表設定</h2>
+            <div class="callout good"><strong>資料完整性良好：</strong>兩份工作簿皆含 16 題作答欄位；有效作答中的 16 題皆無遺漏值，且各題皆有作答差異。</div>
+            <ul><li><strong>題目方向：</strong>使用 <code>答題記錄(完整選項內容)</code> 工作表前置的 1–7 分數判讀 Likert 方向。</li><li><strong>構面編碼：</strong>內在動機（Q1、Q5、Q9、Q13）、認同調節（Q2、Q6、Q10、Q14）、外在調節（Q3、Q7、Q11、Q15）、無動機（Q4、Q8、Q12、Q16）。</li><li><strong>整體信度：</strong>只在全量表 α 的計算中，將 Q4、Q8、Q12、Q16 反向計分；無動機平均數保留原始方向，分數愈高代表無動機愈高。</li></ul>
+          </section>
+          <section id="zh-reliability">
+            <h2>信度結果</h2>
+            <div class="table-wrap"><table><thead><tr><th>分析範圍</th><th class="num">前測 α</th><th class="num">後測 α</th><th>判讀</th></tr></thead><tbody><tr><td>全量表原始分數（16 題）</td><td class="num">.748</td><td class="num">.797</td><td>混合正向與無動機題，只用於說明反向計分的必要性</td></tr><tr><td><strong>全量表（無動機題反向）</strong></td><td class="num"><strong>.927</strong></td><td class="num"><strong>.893</strong></td><td>良好至極佳</td></tr><tr><td>內在動機</td><td class="num">.894</td><td class="num">.896</td><td>良好</td></tr><tr><td>認同調節</td><td class="num">.866</td><td class="num">.907</td><td>良好至極佳</td></tr><tr><td>外在調節</td><td class="num">.879</td><td class="num">.838</td><td>良好</td></tr><tr><td>無動機</td><td class="num">.908</td><td class="num">.779</td><td>前測極佳；後測可接受</td></tr></tbody></table></div>
+            <p>反向後校正題目－總分相關：前測 <strong>.464–.830</strong>；後測 <strong>.181–.784</strong>。後測有較低的題目－總分相關，後續若累積更多樣本，可優先檢視該題在不同情境中的理解情形；本次資料不足以單憑此結果刪題。</p>
+          </section>
+          <section id="zh-means">
+            <h2>構面平均數（7 分量尺）</h2><span class="tag">描述性比較</span><p>無動機維持原始方向；其餘構面分數愈高，代表該類動機愈高。</p>
+            <div class="table-wrap"><table><thead><tr><th>構面</th><th class="num">前測平均數</th><th class="num">後測平均數</th><th class="num">差異（後－前）</th><th>描述</th></tr></thead><tbody><tr><td>內在動機</td><td class="num">5.21</td><td class="num">5.60</td><td class="num up">+0.39</td><td>後測較高</td></tr><tr><td>認同調節</td><td class="num">5.97</td><td class="num">6.08</td><td class="num up">+0.11</td><td>後測略高</td></tr><tr><td>外在調節</td><td class="num">5.28</td><td class="num">5.35</td><td class="num up">+0.07</td><td>接近</td></tr><tr><td>無動機</td><td class="num">3.42</td><td class="num">3.11</td><td class="num down">−0.31</td><td>後測較低</td></tr></tbody></table></div>
+          </section>
+          <section id="zh-limits"><h2>效度與使用限制</h2><ul><li><strong>內容對應：</strong>題目依 SIMS 四構面編碼分組，可支持量表內容與理論架構的對應說明。</li><li><strong>建構效度限制：</strong>兩個時點的完整樣本數都低於 16 題的五倍門檻（80），不將 KMO、Bartlett、EFA 或 CFA 視為穩定的建構效度證據。</li><li><strong>比較建議：</strong>若要檢驗前後差異，應以 35 筆已配對的識別碼建立配對資料，再預先決定分析方式與報告效果量。</li><li><strong>效標關聯效度：</strong>未提供外部效標或其他量表資料，本報告未檢定此項證據。</li></ul></section>
+        </article>
+        <article class="lang-panel" data-lang-panel="en" hidden>
+          <section id="en-summary">
+            <h2>Summary and sample</h2>
+            <p class="lead">Both time points are complete. After reverse scoring, overall internal consistency is good: Cronbach’s α = <strong>.927</strong> at pretest and <strong>.893</strong> at posttest. All four SIMS subscales meet at least an acceptable reliability level for describing motivation at each survey time point.</p>
+            <div class="metrics"><div class="metric"><span>Valid pretest responses</span><strong>39</strong></div><div class="metric"><span>Valid posttest responses</span><strong>41</strong></div><div class="metric"><span>Missing item responses</span><strong>0</strong></div><div class="metric"><span>Matched identifiers</span><strong>35</strong></div></div>
+            <div class="callout"><strong>Interpretation boundary:</strong> The two files contain 39 and 41 responses respectively, with only 35 matched identifiers. Cross-time results here are descriptive only; no paired statistical test was run, so this report does not claim a teaching effect.</div>
+          </section>
+          <section id="en-quality"><h2>Data quality and scoring</h2><div class="callout good"><strong>Good completeness:</strong> Both workbooks have 16 response-item columns. There are no missing item responses among valid records, and every item has response variation.</div><ul><li><strong>Score direction:</strong> Likert direction was read from the leading 1–7 score in the full-text response-record worksheet.</li><li><strong>Construct mapping:</strong> Intrinsic motivation (Q1, Q5, Q9, Q13); identified regulation (Q2, Q6, Q10, Q14); external regulation (Q3, Q7, Q11, Q15); amotivation (Q4, Q8, Q12, Q16).</li><li><strong>Overall reliability:</strong> Q4, Q8, Q12, and Q16 were reverse-scored only for the 16-item overall alpha. Amotivation means retain their original direction: a higher score means higher amotivation.</li></ul></section>
+          <section id="en-reliability"><h2>Reliability results</h2><div class="table-wrap"><table><thead><tr><th>Scope</th><th class="num">Pretest α</th><th class="num">Posttest α</th><th>Interpretation</th></tr></thead><tbody><tr><td>Raw overall score (16 items)</td><td class="num">.748</td><td class="num">.797</td><td>Mixed positive-direction and amotivation items; shown only to explain reverse scoring</td></tr><tr><td><strong>Overall score (amotivation items reversed)</strong></td><td class="num"><strong>.927</strong></td><td class="num"><strong>.893</strong></td><td>Good to excellent</td></tr><tr><td>Intrinsic motivation</td><td class="num">.894</td><td class="num">.896</td><td>Good</td></tr><tr><td>Identified regulation</td><td class="num">.866</td><td class="num">.907</td><td>Good to excellent</td></tr><tr><td>External regulation</td><td class="num">.879</td><td class="num">.838</td><td>Good</td></tr><tr><td>Amotivation</td><td class="num">.908</td><td class="num">.779</td><td>Excellent at pretest; acceptable at posttest</td></tr></tbody></table></div><p>Reverse-scored corrected item-total correlations ranged from <strong>.464–.830</strong> at pretest and <strong>.181–.784</strong> at posttest. The lower posttest correlation can be reviewed after more data are accumulated; it is not sufficient grounds to delete an item now.</p></section>
+          <section id="en-means"><h2>Subscale means (7-point scale)</h2><span class="tag">Descriptive comparison</span><p>Amotivation remains in its original direction; higher scores on the other subscales indicate more of that type of motivation.</p><div class="table-wrap"><table><thead><tr><th>Subscale</th><th class="num">Pretest mean</th><th class="num">Posttest mean</th><th class="num">Change (post − pre)</th><th>Description</th></tr></thead><tbody><tr><td>Intrinsic motivation</td><td class="num">5.21</td><td class="num">5.60</td><td class="num up">+0.39</td><td>Higher at posttest</td></tr><tr><td>Identified regulation</td><td class="num">5.97</td><td class="num">6.08</td><td class="num up">+0.11</td><td>Slightly higher at posttest</td></tr><tr><td>External regulation</td><td class="num">5.28</td><td class="num">5.35</td><td class="num up">+0.07</td><td>Similar</td></tr><tr><td>Amotivation</td><td class="num">3.42</td><td class="num">3.11</td><td class="num down">−0.31</td><td>Lower at posttest</td></tr></tbody></table></div></section>
+          <section id="en-limits"><h2>Validity and limits</h2><ul><li><strong>Content alignment:</strong> Grouping follows the four SIMS constructs, supporting a content-to-theory alignment statement.</li><li><strong>Construct-validity limit:</strong> Each complete sample is below five times the 16-item count (80). KMO, Bartlett, EFA, and CFA are not reported as stable construct-validity evidence.</li><li><strong>Comparison recommendation:</strong> Use the 35 matched identifiers to create a paired dataset, then pre-specify the statistical test and effect-size reporting before testing pre/post change.</li><li><strong>Criterion validity:</strong> No external criterion or additional instrument was supplied, so this evidence was not tested.</li></ul></section>
+        </article>
+      </div>
+    </div>
+    <footer data-lang-panel="zh">資料來源：<code>data/pre-test.xlsx</code> 與 <code>data/post-test.xlsx</code> 的「答題記錄(完整選項內容)」工作表。理論編碼：Guay、Vallerand 與 Blanchard（2000）SIMS 量表附錄。產出日期：2026-08-03。</footer>
+    <footer data-lang-panel="en" hidden>Sources: full-text response-record worksheets in <code>data/pre-test.xlsx</code> and <code>data/post-test.xlsx</code>. Construct coding: Guay, Vallerand, and Blanchard (2000), SIMS appendix. Generated 2026-08-03.</footer>
+  </main>
+  <script>
+    const uiText = { zh: { title: "SIMS 前後測問卷品質報告", pageTitle: "SIMS 前後測問卷品質報告", pageSubtitle: "16 題 SIMS 的資料完整性、內部一致性與內容對應檢核；僅呈現彙整結果。", catalogTitle: "報告目錄" }, en: { title: "SIMS Pre/Post Questionnaire Quality Report", pageTitle: "SIMS Pre/Post Questionnaire Quality Report", pageSubtitle: "A 16-item SIMS check of data completeness, internal consistency, and content alignment; aggregate results only.", catalogTitle: "Report catalog" } };
+    const buttons = document.querySelectorAll("[data-lang-button]");
+    const panels = document.querySelectorAll("[data-lang-panel]");
+    const catalogLists = document.querySelectorAll("[data-catalog-list]");
+    function setLanguage(lang) { document.documentElement.lang = lang === "zh" ? "zh-Hant-TW" : "en"; document.title = uiText[lang].title; document.querySelectorAll("[data-i18n-key]").forEach((node) => { node.textContent = uiText[lang][node.dataset.i18nKey]; }); panels.forEach((panel) => { panel.hidden = panel.dataset.langPanel !== lang; }); catalogLists.forEach((list) => { list.hidden = list.dataset.catalogList !== lang; }); buttons.forEach((button) => { button.setAttribute("aria-pressed", String(button.dataset.langButton === lang)); }); }
+    buttons.forEach((button) => { button.addEventListener("click", () => setLanguage(button.dataset.langButton)); });
+    setLanguage("zh");
+  </script>
+</body>
+</html>
