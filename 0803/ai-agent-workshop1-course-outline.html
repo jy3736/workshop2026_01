@@ -360,7 +360,7 @@
   <div class="slide-text">
 <h2 id="module-1windows-11-vibe-coding">九、Module 1：Windows 11 Vibe Coding 環境準備</h2>
 <p>本節以 Windows 11 筆電為主，目標是先完成可用的 Vibe Coding 工作環境，而不是立刻精通所有工具。學員需取得課程資料、確認資料夾位置，並能在 Codex 中開啟正確的 project。</p>
-<p>建議優先使用課程提供的 <code>setup-windows.bat</code> 完成一鍵安裝；若受限於權限、網路或資安政策，再依補充講義手動安裝。完成後，確認 <code>code</code>、<code>git</code>、<code>node</code>、<code>npm</code>、<code>uv</code>、<code>gh</code> 與 <code>codex</code> 都能顯示版本號。</p>
+<p>補充講義提供三種安裝方式，可依權限、網路與個人偏好擇一：<strong>手動安裝</strong>逐項下載並執行 <code>winget</code> 指令；透過 <strong>AI Agent Prompt</strong> 安裝，於 ChatGPT 桌面 app 切換到 Work 並開啟完整存取權（Full access）後貼上課程提供的 prompt，讓 AI Agent 自行檢查缺少的工具、依序安裝並回報結果（安裝完成後務必切回先要求核准）；或使用課程提供的 <code>setup-windows.bat</code> 一鍵安裝。三種方式安裝的工具清單相同，若其中一種失敗，可改用另一種或回頭手動排除。完成後，確認 <code>code</code>、<code>git</code>、<code>node</code>、<code>npm</code>、<code>uv</code>、<code>gh</code> 與 <code>codex</code> 都能顯示版本號。</p>
 <p>帳號部分需確認 ChatGPT / Codex 與 GitHub 都能登入。Codex CLI 透過瀏覽器登入 ChatGPT 帳號；GitHub CLI 使用 <code>gh auth login</code> 與一次性代碼登入，不需要先設定 SSH 金鑰。</p>
 <p>完成本節後，學員應能啟動 Codex CLI、讓 Codex 讀取第一個 project，並具備 VS Code、Python、Node.js 與 GitHub CLI 的基本可用環境。</p>
 <p>補充材料：<a href="module1/windows11-vibe-coding-setup.html">Windows 11 Vibe Coding 與 AI Agent 環境建置</a></p>
@@ -616,7 +616,7 @@
   <div class="slide-text">
 <h2 id="9-module-1-windows-11-vibe-coding-environment-preparation">9. Windows 11 Vibe Coding Environment Preparation</h2>
 <p>This section focuses on Windows 11 laptops. The goal is to prepare a usable vibe-coding work environment, not to master every tool immediately.</p>
-<p>Use the course-provided <code>setup-windows.bat</code> first when possible. If permissions, network access, or security policy block it, install tools manually using the supplementary handout. After setup, confirm that <code>code</code>, <code>git</code>, <code>node</code>, <code>npm</code>, <code>uv</code>, <code>gh</code>, and <code>codex</code> can show version numbers.</p>
+<p>The supplementary handout now offers three installation methods, chosen based on permissions, network access, and preference: <strong>manual installation</strong>, running <code>winget</code> commands one by one; installing <strong>via an AI Agent Prompt</strong>, by switching the ChatGPT desktop app to Work, turning on Full access, and pasting the course-provided prompt so the AI Agent checks for missing tools, installs them in order, and reports back (switch back to Ask for approval once the install finishes); or the course-provided <code>setup-windows.bat</code> one-click script. All three install the same toolset, so if one method fails, try another or fall back to fixing items manually. After setup, confirm that <code>code</code>, <code>git</code>, <code>node</code>, <code>npm</code>, <code>uv</code>, <code>gh</code>, and <code>codex</code> can show version numbers.</p>
 <p>For accounts, confirm that ChatGPT / Codex and GitHub can both sign in. Codex CLI signs in through a browser, and GitHub CLI signs in with <code>gh auth login</code> and a one-time code.</p>
 <p>Supplement: <a href="module1/windows11-vibe-coding-setup.html">Windows 11 Vibe Coding and AI Agent Environment Setup</a></p>
   </div>
